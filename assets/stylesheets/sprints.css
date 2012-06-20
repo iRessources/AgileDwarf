@@ -1,0 +1,207 @@
+#tasks
+{
+    margin: 0 5% 0 5%;
+    width: 90%;
+    float: left;
+}
+
+.sprints_column
+{
+    float: left;
+    margin: 0 1% 0 1%;
+    width: 48%;
+}
+
+.fl
+{
+    float: left;
+}
+
+.fr
+{
+    float: right;
+}
+
+.hidden
+{
+    display: none;
+}
+
+.sprints_panel_header img
+{
+    padding: 6px 10px 6px 0;
+    cursor: pointer;
+}
+
+.sprints_panel_header span
+{
+    margin: 10px 0 0 10px;
+}
+
+.sprints_panel
+{
+    float: left;
+    width: 100%;
+    border: 1px solid black;
+    background: #E3E3E3;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    margin-bottom: 20px;
+}
+
+.task_panel
+{
+    float: left;
+    margin: 0 1% 0 1%;
+    width: 31%;
+    border: 1px solid black;
+    background: #E3E3E3;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+
+.task_panel h3, .sprints_panel h3
+{
+    font-weight: bold;
+    margin: 5px 0 7px 15px;
+    padding: 0;
+    border: 0;
+}
+
+.task_list .sc_task.active
+{
+    border-color: #1F6993;
+    box-shadow: 0 0 4px #1f6993;
+    -moz-box-shadow: 0 0 4px #1f6993;
+    -ms-box-shadow: 0 0 4px #1f6993;
+    -o-box-shadow: 0 0 4px #1f6993;
+    -webkit-box-shadow: 0 0 4px #1f6993;
+}
+
+.task_list
+{
+    margin: 0;
+    padding: 0 0 10px 0;
+    float: left;
+    width: 100%;
+}
+
+.task_list .sc_task
+{
+    cursor: pointer;
+    overflow: hidden;
+    height: 1%;
+    background: white;
+    padding: 7px;
+    border: 1px solid black;
+    margin: 3px;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+}
+
+.sc_task .task_subject
+{
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.sc_task .task_estimate_sep
+{
+    margin: 0 5px 0 5px;
+}
+
+#show_closed_sprints, #sprints_selection
+{
+    padding: 5px;
+}
+
+.sprints_panel.new, .sc_task.new
+{
+    background-color: #bce398;
+}
+
+.sprint_description
+{
+    display: block;
+    clear: both;
+    width: 100%;
+    padding: 5px;
+}
+
+.sprint_time
+{
+    margin: 0 10px 10px 0;
+    width: 100%;
+}
+
+.task_doneratio_slide
+{
+    margin: 5px;
+    width: 50%;
+    float: left;
+}
+
+.sc_task .measure
+{
+    margin-left: 3px;
+}
+
+.task_doneratio_value
+{
+    margin-left: 5px;
+    padding: 2px 0;
+}
+
+.task_row
+{
+    width: 100%;
+    float: left;
+}
+
+.task_estimate_params
+{
+    padding: 2px 0;
+}
+
+.task_add_spent:hover
+{
+    background: #e4edff;
+}
+
+.task_add_spent
+{
+    background: white;
+    border: 1px solid black;
+    margin-left: 5px;
+    padding: 2px 7px;
+}
+
+.task_desc
+{
+    margin: 0 5px;
+}
+
+.closed_task .task_no, .closed_task .task_subject
+{
+    text-decoration: line-through;
+}
+
+.closed_sprint
+{
+    display: none;
+}
+
+.folded_sprint .task_list .sc_task
+{
+    display: none;
+}
+
+.time_list
+{
+    margin-right: 5px;
+}

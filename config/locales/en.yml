@@ -1,0 +1,35 @@
+# English strings go here for Rails i18n
+en:
+  label_menu_sprints: Sprints
+  label_menu_mytasks: Tasks
+  label_menu_burndown: Run charts
+  label_burndown_series_spent: Spent time
+  label_burndown_series_rest: Remaining estimate
+  label_burndown_series_total: Total
+  label_burndown_axis_y_name: Hours
+  label_backlog: Backlog
+  label_estimated: "Estimated for "
+  label_task_field_description_empty: No description
+  label_sprints_placeholder_name: "Sprint "
+  label_sprints_placeholder_startdate: "[Start date]"
+  label_sprints_placeholder_enddate: "[End date]"
+  label_sprints_placeholder_estimated: "[Estimated]"
+  label_sprints_placeholder_subject: "[Subject]"
+  label_sprints_placeholder_owner: "[Owner]"
+  label_sprints_placeholder_done: "[Done ratio]"
+  label_sprints_placeholder_desc: "[Description]"
+  label_sprints_description_panel_header: Description
+  label_sprints_select_all: All
+  label_sprints_select_none: Not in sprint
+  label_sprints_showclosed: Show closed sprints
+  label_sprints_filter: Show sprint
+  label_sprints_title_fold: Folding
+  label_sprints_title_add_task: Add task
+  label_sprints_title_add_sprint: Add sprint
+  label_sprints_title_close: Close sprint
+  label_sprints_dialogs_closeerror_title: Can not close this sprint
+  label_sprints_dialogs_closeerror_content: You can close only sprints with all resolved tasks.
+  label_sprints_dialogs_closeconfirm_title: Close confirmation
+  label_sprints_dialogs_closeconfirm_content: Do you really want to close this sprint? Anyway you can at any moment see all sprints including closed.
+  label_tasks_select_user_current: Me
+  label_tasks_select_user_all: All
