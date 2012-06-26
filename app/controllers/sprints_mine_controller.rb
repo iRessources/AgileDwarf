@@ -8,6 +8,8 @@ class SprintsMineController < ApplicationController
     @sprints = Sprints.open_sprints(@project)
     @project_id = @project.id
     @assignables = @project.assignable_users
+    @assignables_list = {}
+    @project.assignable_users.each{|u| @assignables_list[u.id] = u.firstname + ' ' + u.lastname}
 
     # filter values
     @selected = params[:sprint] || (@sprints[0].nil? ? 'all' : @sprints[0].id.to_s)

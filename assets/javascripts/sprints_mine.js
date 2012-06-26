@@ -62,6 +62,13 @@ Sprints.ready(function()
             panel.times.updateTaskSpent(task, timeNew).update();
             task.spent = timeNew;
         }}, taskInlineOpts));
+        // owner
+        $('.task_owner', el).editable('/tasks/inplace', $.extend({name: 'assigned_to_id', type: 'select', onblur : 'submit', placeholder: Sprints.l('task_owner_placeholder'),
+            data: Sprints.getProjectUsers(), callback: function (res, settings)
+            {
+                panel.times.updateTaskOwner(task, res).update();
+                task.owner = res;
+            }}, taskInlineOpts));
 
         // done ratio slider
         $(".task_doneratio_slide", el).each(function ()
@@ -143,23 +150,40 @@ Sprints.ready(function()
                 return true;
             }
 
+            function removeTaskForOwner(owner, task)
+            {
+                if (!checkOwner(owner))
+                    return ;
+                data[owner].done -= task.done;
+                data[owner].est -= task.est;
+                data[owner].spent -= task.spent;
+            }
+
+            function addTaskForOwner(owner, task)
+            {
+                if (!checkOwner(owner))
+                    return ;
+                data[owner].done += task.done;
+                data[owner].est += task.est;
+                data[owner].spent += task.spent;
+            }
+
             obj.removeTask = function (task)
             {
-                if (!checkOwner(task.owner))
-                    return obj;
-                data[task.owner].done -= task.done;
-                data[task.owner].est -= task.est;
-                data[task.owner].spent -= task.spent;
+                removeTaskForOwner(task.owner, task);
                 return obj;
             };
 
             obj.addTask = function (task)
             {
-                if (!checkOwner(task.owner))
-                    return obj;
-                data[task.owner].done += task.done;
-                data[task.owner].est += task.est;
-                data[task.owner].spent += task.spent;
+                addTaskForOwner(task.owner, task);
+                return obj;
+            };
+
+            obj.updateTaskOwner = function (task, newOwner)
+            {
+                removeTaskForOwner(task.owner, task);
+                addTaskForOwner(newOwner, task);
                 return obj;
             };
 

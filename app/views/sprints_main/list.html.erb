@@ -32,20 +32,24 @@
 
 <h2><%= l(:label_menu_sprints) %></h2>
 
-<div id="sprints_selection" class="fl">
-  <label for="sprints_selection_el"><%= l(:label_sprints_filter) %></label>
-  <select id="sprints_selection_el">
-    <option value='all'><%= l(:label_sprints_select_all) %></option>
-    <%- @sprints.each do |s| %>
-        <option value="<%= s.id %>"><%= s.name %></option>
-    <%- end %>
-  </select>
-</div>
 
-<div id="show_closed_sprints" class="fl">
-  <label for="show_closed_sprints_el"><%= l(:label_sprints_showclosed) %></label>
-  <input type="checkbox" name="show_closed_sprints" id="show_closed_sprints_el"/>
-</div>
+<fieldset id="filters" class="collapsible">
+  <legend><%= l(:label_filter_plural) %></legend>
+  <div id="sprints_selection" class="fl">
+      <label for="sprints_selection_el"><%= l(:label_sprints_filter) %></label>
+      <select id="sprints_selection_el">
+        <option value='all'><%= l(:label_sprints_select_all) %></option>
+        <%- @sprints.each do |s| %>
+            <option value="<%= s.id %>"><%= s.name %></option>
+        <%- end %>
+      </select>
+  </div>
+
+  <div id="show_closed_sprints" class="fl">
+      <label for="show_closed_sprints_el"><%= l(:label_sprints_showclosed) %></label>
+      <input type="checkbox" name="show_closed_sprints" id="show_closed_sprints_el"/>
+  </div>
+</fieldset>
 
 <div id="tasks">
   <div class='sprints_column'>

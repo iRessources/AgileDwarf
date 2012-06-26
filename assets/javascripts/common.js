@@ -126,6 +126,12 @@ var Sprints = function ()
     {
         for (var i = 0, len = readyList.length; i < len; ++i)
             readyList[i]();
+        $('.collapsible legend').click(function()
+        {
+            var fieldset = $(this).parent();
+            fieldset.toggleClass('collapsed');
+            fieldset.children(':gt(0)').toggleClass('hidden');
+        });
     });
 
     return obj;

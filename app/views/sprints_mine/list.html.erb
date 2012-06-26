@@ -18,6 +18,7 @@
         protect_against_forgery: <%= protect_against_forgery? ? "true" : "false" %>,
         request_forgery_protection_token: '<%= request_forgery_protection_token %>',
         form_authenticity_token: '<%= form_authenticity_token %>',
+        project_users: <%= ActiveSupport::JSON.encode(@assignables_list) %>,
         lang:
         {
             task_subject_placeholder: '<%= l(:label_sprints_placeholder_subject) %>',
@@ -29,6 +30,8 @@
 <h2><%= l(:label_menu_mytasks) %></h2>
 
 <div id="selections">
+  <fieldset id="filters" class="collapsible">
+    <legend><%= l(:label_filter_plural) %></legend>
     <div id="sprints_selection" class="fl">
       <select>
         <option <%= @selected == 'all' ? 'selected=selected' : '' %> value='all'><%= l(:label_sprints_select_all) %></option>
@@ -47,6 +50,7 @@
         <%- end %>
       </select>
     </div>
+  </fieldset>
 </div>
 
 <div id="tasks">
