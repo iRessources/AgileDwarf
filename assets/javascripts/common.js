@@ -75,7 +75,7 @@ var Sprints = function ()
                     {
                         $.ajax(
                         {
-                            url: "/tasks/update",
+                            url: "/adtaskinl/update",
                             data: params
                         });
                     }
@@ -84,7 +84,7 @@ var Sprints = function ()
                     onChangeColumn(newList, params, oldList, item);
                     $.ajax(
                     {
-                        url: "/tasks/update",
+                        url: "/adtaskinl/update",
                         data: params
                     });
                 }

@@ -36,7 +36,7 @@ Sprints.Task = function (el, sprint, isNew)
     isNew = !!isNew;
     if (isNew)
     {
-        $('.task_subject', el).editable('/tasks/inplace', $.extend({name: 'subject', type: 'ptext', placeholder: Sprints.l('task_subject_placeholder'), callback: function(value, settings)
+        $('.task_subject', el).editable('/adtaskinl/inplace', $.extend({name: 'subject', type: 'ptext', placeholder: Sprints.l('task_subject_placeholder'), callback: function(value, settings)
         {
             var inlineEl = $(this);
             inlineEl.editable('destroy');
@@ -47,16 +47,16 @@ Sprints.Task = function (el, sprint, isNew)
         addTaskInlines(isNew);
     function addTaskInlines()
     {
-        $('.task_subject', el).editable('/tasks/inplace', $.extend({name: 'subject', type: 'ptext', placeholder: Sprints.l('task_subject_placeholder')}, taskInlineOpts));
+        $('.task_subject', el).editable('/adtaskinl/inplace', $.extend({name: 'subject', type: 'ptext', placeholder: Sprints.l('task_subject_placeholder')}, taskInlineOpts));
 
-        $('.task_estimate', el).editable('/tasks/inplace', $.extend({name: 'estimated_hours', type: 'ptext', placeholder: Sprints.l('task_estimate_placeholder'), callback: function (res, settings)
+        $('.task_estimate', el).editable('/adtaskinl/inplace', $.extend({name: 'estimated_hours', type: 'ptext', placeholder: Sprints.l('task_estimate_placeholder'), callback: function (res, settings)
         {
             var timeNew = +res || 0;
             sprint.times.updateTaskTime(task, timeNew).update();
             task.time = timeNew;
         }}, taskInlineOpts));
 
-        $('.task_owner', el).editable('/tasks/inplace', $.extend({name: 'assigned_to_id', type: 'select', onblur : 'submit', placeholder: Sprints.l('task_owner_placeholder'),
+        $('.task_owner', el).editable('/adtaskinl/inplace', $.extend({name: 'assigned_to_id', type: 'select', onblur : 'submit', placeholder: Sprints.l('task_owner_placeholder'),
             data: Sprints.getProjectUsers(), callback: function (res, settings)
             {
                 sprint.times.updateTaskOwner(task, res).update();
@@ -72,7 +72,7 @@ Sprints.Task = function (el, sprint, isNew)
             text: '...',
             ajax:
             {
-                url: '/tasks/tooltip',
+                url: '/adtaskinl/tooltip',
                 data: {id: task.id}
             }
         },
@@ -90,7 +90,7 @@ Sprints.Task = function (el, sprint, isNew)
         });
 
 
-        api.elements.content.editable('/tasks/inplace', $.extend({name: 'description', type: 'textarea', rows: 10, cols: 20, submit: '<br/><button>OK</button>', cancel: '<button>Cancel</button>',
+        api.elements.content.editable('/adtaskinl/inplace', $.extend({name: 'description', type: 'textarea', rows: 10, cols: 20, submit: '<br/><button>OK</button>', cancel: '<button>Cancel</button>',
                                                                   onblur: 'submit', event: 'taskdescedit', callback: function (res, settings)
         {
             api.set({'hide.event': 'mouseleave'});
@@ -202,7 +202,7 @@ Sprints.Sprint = function (el, isNew)
     {
         $.ajax(
         {
-            url: "/tasks/create",
+            url: "/adtaskinl/create",
             data:
             {
                 subject: Sprints.l('task_subject_placeholder'),
@@ -247,7 +247,7 @@ Sprints.Sprint = function (el, isNew)
         {
             $.ajax(
             {
-                url: "/sprints/inplace",
+                url: "/adsprintinl/inplace",
                 data:
                 {
                     id: sprint.id,
@@ -354,15 +354,15 @@ Sprints.Sprint = function (el, isNew)
     }
     function addSprintInlines(expand)
     {
-        $('.sprint_end', el).editable('/sprints/inplace', $.extend({}, sprintInlineOpts, {name: 'ir_end_date', type: 'datepicker'}));
-        $('.sprint_start', el).editable('/sprints/inplace', $.extend({}, sprintInlineOpts, {name: 'ir_start_date', type: 'datepicker'}));
-        $('.sprint_name', el).editable('/sprints/inplace', $.extend({}, sprintInlineOpts, {name: 'name', type: 'text', callback: function (val, settings)
+        $('.sprint_end', el).editable('/adsprintinl/inplace', $.extend({}, sprintInlineOpts, {name: 'ir_end_date', type: 'datepicker'}));
+        $('.sprint_start', el).editable('/adsprintinl/inplace', $.extend({}, sprintInlineOpts, {name: 'ir_start_date', type: 'datepicker'}));
+        $('.sprint_name', el).editable('/adsprintinl/inplace', $.extend({}, sprintInlineOpts, {name: 'name', type: 'text', callback: function (val, settings)
         {
             $('#sprints_selection_el option[value=' + sprint.id + ']').text(val);
             if (typeof sprintInlineOpts.callback != 'undefined')
                 sprintInlineOpts.callback.apply(this, [val, settings]);
         }}));
-        $('.sprint_description', el).editable('/sprints/inplace', $.extend({}, sprintInlineOpts, {name: 'description', type: 'textarea', rows: 2, cols: 50, onblur : 'submit',
+        $('.sprint_description', el).editable('/adsprintinl/inplace', $.extend({}, sprintInlineOpts, {name: 'description', type: 'textarea', rows: 2, cols: 50, onblur : 'submit',
                                                                                               placeholder: Sprints.l('sprint_description_placeholder')}));
         if (expand)
         {
@@ -406,7 +406,7 @@ Sprints.ready(function()
                    date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
         $.ajax(
         {
-            url: "/sprints/create",
+            url: "/adsprintinl/create",
             data: {name: name},
             success: function (data)
             {

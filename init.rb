@@ -3,19 +3,19 @@ require 'redmine'
 require 'scrum_enabled_module_patch'
 
 Redmine::Plugin.register :AgileDwarf do
-  name 'Redmine Scrum plugin'
+  name 'Agile dwarf plugin'
   author 'Mark Ablovacky'
-  description 'Scrum support for Redmine'
-  version '0.0.1'
+  description 'Agile for Redmine'
+  version '0.0.2'
   url ''
 
   project_module :scrum do
-    permission :sprints_main, {:sprints_main => [:list], :tasks => [:update, :inplace, :create, :tooltip], :sprints => [:create, :inplace]}
-    permission :sprints_mine, {:sprints_mine => [:list], :tasks => [:update, :inplace, :tooltip, :spent]}
-    permission :burndown_charts, {:burndown => [:show]}
+    permission :sprints, {:adsprints => [:list], :adtaskinl => [:update, :inplace, :create, :tooltip], :adsprintinl => [:create, :inplace]}
+    permission :sprints_tasks, {:adtasks => [:list], :adtaskinl => [:update, :inplace, :tooltip, :spent]}
+    permission :burndown_charts, {:adburndown => [:show]}
   end
 
-  menu :project_menu, :sprints_mine, { :controller => 'sprints_mine', :action => 'list' }, :caption => :label_menu_mytasks, :after => :activity, :param => :project_id
-  menu :project_menu, :sprints_main, { :controller => 'sprints_main', :action => 'list' }, :caption => :label_menu_sprints, :after => :sprints_mine, :param => :project_id
-  menu :project_menu, :burndown_charts, { :controller => 'burndown', :action => 'show' }, :caption => :label_menu_burndown, :after => :sprints_main, :param => :project_id
+  menu :project_menu, :adsprints, { :controller => 'adsprints', :action => 'list' }, :caption => :label_menu_mytasks, :after => :activity, :param => :project_id
+  menu :project_menu, :adtasks, { :controller => 'adtasks', :action => 'list' }, :caption => :label_menu_sprints, :after => :adsprints, :param => :project_id
+  menu :project_menu, :adburndown, { :controller => 'adburndown', :action => 'show' }, :caption => :label_menu_burndown, :after => :adtasks, :param => :project_id
 end

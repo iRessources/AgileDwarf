@@ -1,0 +1,114 @@
+<%= javascript_include_tag 'libs/jquery-1.7.2.min.js', :plugin => 'AgileDwarf' %>
+<%= javascript_include_tag 'libs/jquery-ui-1.8.18.custom.min.js', :plugin => 'AgileDwarf' %>
+<%= javascript_include_tag 'libs/jquery.jeditable.mini.js', :plugin => 'AgileDwarf' %>
+<%= javascript_include_tag 'libs/jquery.jeditable.datepicker.js', :plugin => 'AgileDwarf' %>
+<%= javascript_include_tag 'libs/jquery.textPlaceholder.js', :plugin => 'AgileDwarf' %>
+<%= javascript_include_tag 'libs/jquery.jeditable.ptext.js', :plugin => 'AgileDwarf' %>
+<%= javascript_include_tag 'libs/jquery.qtip.min.js', :plugin => 'AgileDwarf' %>
+<%= javascript_include_tag 'common', :plugin => 'AgileDwarf' %>
+<%= javascript_include_tag 'sprints_main', :plugin => 'AgileDwarf' %>
+<%= stylesheet_link_tag 'sprints.css', :plugin => 'AgileDwarf', :media => 'print,screen' %>
+<%= stylesheet_link_tag 'jquery-ui-1.8.18.custom.css', :plugin => 'AgileDwarf', :media => 'print,screen' %>
+<%= stylesheet_link_tag 'jquery.qtip.min.css', :plugin => 'AgileDwarf', :media => 'print,screen' %>
+
+<script type="text/javascript">
+    Sprints.setOptions(
+    {
+        project_id: <%=h @project_id %>,
+        protect_against_forgery: <%= protect_against_forgery? ? "true" : "false" %>,
+        request_forgery_protection_token: '<%= request_forgery_protection_token %>',
+        plugin_path: '<%= Redmine::Utils.relative_url_root + '/' + Engines.plugins['AgileDwarf'].public_asset_directory %>',
+        project_users: <%= ActiveSupport::JSON.encode(@assignables) %>,
+        form_authenticity_token: '<%= form_authenticity_token %>',
+        lang:
+        {
+            task_subject_placeholder: '<%= l(:label_sprints_placeholder_subject) %>',
+            task_estimate_placeholder: '<%= l(:label_sprints_placeholder_estimated) %>',
+            task_owner_placeholder: '<%= l(:label_sprints_placeholder_owner) %>',
+            sprint_description_placeholder:  '<%= l(:label_sprints_placeholder_desc) %>'
+        }
+    });
+</script>
+
+<h2><%= l(:label_menu_sprints) %></h2>
+
+
+<fieldset id="filters" class="collapsible">
+  <legend><%= l(:label_filter_plural) %></legend>
+  <div id="sprints_selection" class="fl">
+      <label for="sprints_selection_el"><%= l(:label_sprints_filter) %></label>
+      <select id="sprints_selection_el">
+        <option value='all'><%= l(:label_sprints_select_all) %></option>
+        <%- @sprints.each do |s| %>
+            <option value="<%= s.id %>"><%= s.name %></option>
+        <%- end %>
+      </select>
+  </div>
+
+  <div id="show_closed_sprints" class="fl">
+      <label for="show_closed_sprints_el"><%= l(:label_sprints_showclosed) %></label>
+      <input type="checkbox" name="show_closed_sprints" id="show_closed_sprints_el"/>
+  </div>
+</fieldset>
+
+<div id="tasks">
+  <div class='sprints_column'>
+    <div class='sprints_panel'>
+      <div class="sprints_panel_header">
+        <h3 class="fl"><%= l(:label_backlog) %></h3>
+        <img class="fr create_sprint" src="<%= Engines::RailsExtensions::AssetHelpers.plugin_asset_path('AgileDwarf', 'images', 'add_sprint.png') %>" title="<%= l(:label_sprints_title_add_sprint) %>"/>
+        <img class="fr add_task" src="<%= Engines::RailsExtensions::AssetHelpers.plugin_asset_path('AgileDwarf', 'images', 'add_task.png') %>" title="<%= l(:label_sprints_title_add_task) %>"/>
+      </div>
+      <div class="task_list" id="column.backlog">
+        <%= render :partial => "task", :collection => @backlog %>
+      </div>
+      <div class="time_list fr">
+      </div>
+    </div>
+  </div>
+
+  <div class='sprints_column' id="sprints_sprints">
+    <div></div>
+    <%= render :partial => "sprint", :collection => @sprints %>
+  </div>
+</div>
+
+<div id="sprint_template" class="hidden">
+  <div class='sprints_panel new'>
+    <div class="sprints_panel_header">
+      <span class="fl sprint_start"></span>
+      <span class="fl sprint_end"></span>
+      <h3 class="fl sprint_name"><%= l(:label_sprints_placeholder_name) %></h3>
+      <img class="fr add_task" src="<%= Engines::RailsExtensions::AssetHelpers.plugin_asset_path('AgileDwarf', 'images', 'add_task.png') %>" title="<%= l(:label_sprints_title_add_task) %>"/>
+      <img class="fr fold_sprint" src="<%= Engines::RailsExtensions::AssetHelpers.plugin_asset_path('AgileDwarf', 'images', 'fold_sprint.png') %>" title="<%= l(:label_sprints_title_fold) %>"/>
+      <img class="fr close_sprint" src="<%= Engines::RailsExtensions::AssetHelpers.plugin_asset_path('AgileDwarf', 'images', 'close_sprint.png') %>" title="<%= l(:label_sprints_title_close) %>"/>
+      <span class="sprint_description"><%= l(:label_sprints_placeholder_desc) %></span>
+    </div>
+    <div class="task_list">
+    </div>
+    <div class="time_list fr">
+    </div>
+  </div>
+</div>
+
+<div id="task_template" class="hidden">
+    <div class="sc_task new">
+      <div class="fl task_no"></div>
+      <div class="fl task_desc"><img src="<%= Engines::RailsExtensions::AssetHelpers.plugin_asset_path('AgileDwarf', 'images', 'task_desc.png') %>"/></div>
+      <div class="task_subject"></div>
+      <div class="task_estimate fl"></div>
+      <div class="task_owner fr"></div>
+    </div>
+</div>
+
+<div id="sprint_close_error" title="<%= l(:label_sprints_dialogs_closeerror_title) %>" class="hidden">
+  <p>
+    <%= l(:label_sprints_dialogs_closeerror_content) %>
+  </p>
+</div>
+
+<div id="sprint_close_confirm" title="<%= l(:label_sprints_dialogs_closeconfirm_title) %>" class="hidden">
+  <p>
+    <%= l(:label_sprints_dialogs_closeconfirm_content) %>
+  </p>
+</div>

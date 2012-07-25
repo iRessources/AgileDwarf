@@ -198,11 +198,11 @@ var Burndown = function ()
         // selections
         $('#sprints_selection select').change(function ()
         {
-            location.href = '/burndown/show?project_id=' + settings.project_id + '&sprint=' + $(this).val() + '&user=' +  $('#user_selection select').val();
+            location.href = '/adburndown/show?project_id=' + settings.project_id + '&sprint=' + $(this).val() + '&user=' +  $('#user_selection select').val();
         });
         $('#user_selection select').change(function ()
         {
-            location.href = '/burndown/show?project_id=' + settings.project_id + '&sprint=' + $('#sprints_selection select').val() + '&user=' +  $(this).val();
+            location.href = '/adburndown/show?project_id=' + settings.project_id + '&sprint=' + $('#sprints_selection select').val() + '&user=' +  $(this).val();
         });
     });
 

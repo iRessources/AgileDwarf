@@ -1,0 +1,58 @@
+<%= javascript_include_tag 'libs/jquery-1.7.2.min.js', :plugin => 'AgileDwarf' %>
+<%= javascript_include_tag 'libs/highcharts.js', :plugin => 'AgileDwarf' %>
+<%= javascript_include_tag 'burndown', :plugin => 'AgileDwarf' %>
+<%= stylesheet_link_tag 'sprints.css', :plugin => 'AgileDwarf', :media => 'print,screen' %>
+
+<script type="text/javascript">
+    Burndown.setOptions(
+    {
+        title: {text: 'Burn-down chart for <%=h @sprintName || 'whole project' %>'},
+        yAxis: {title: {text: '<%= l(:label_burndown_axis_y_name) %>'}},
+        tooltip:
+        {
+            formatter: function ()
+            {
+                var res = this.series.tooltipHeaderFormatter(this.key);
+                res += this.point.tooltipFormatter(this.series.tooltipOptions.pointFormat);
+                if (this.series.index == 0)
+                    res += '<%= l(:label_burndown_series_total) %>' + ': ' + '<b>' + this.total + '</b>';
+                return res;
+            }
+        },
+        series:
+        [
+            {name: "<%= l(:label_burndown_series_rest) %>"},
+            {name: "<%= l(:label_burndown_series_spent) %>"}
+        ]
+    }, <%=raw @spent %>, <%=raw @tasks %>, <%=raw @changes %>);
+    Burndown.setSettings(
+    {
+        project_id: <%=h @project_id %>
+    });
+</script>
+
+<h2><%= l(:label_menu_burndown) %></h2>
+
+<div class="fl">
+  <div id="sprints_selection" class="fl">
+    <select>
+      <option <%= @selected == 'all' ? 'selected=selected' : '' %> value='all'><%= l(:label_sprints_select_all) %></option>
+      <option <%= @selected == 'none' ? 'selected=selected' : '' %> value='none'><%= l(:label_sprints_select_none) %></option>
+      <%- @sprints.each do |s| %>
+          <option value="<%= s.id %>" <%= @selected == s.id.to_s ? 'selected=selected' : '' %>><%= s.name %></option>
+      <%- end %>
+    </select>
+  </div>
+  <div id="user_selection" class="fl">
+    <select>
+      <option <%= @user == 'all' ? 'selected=selected' : '' %> value='all'><%= l(:label_tasks_select_user_all) %></option>
+      <option <%= @user == 'current' ? 'selected=selected' : '' %> value='current'><%= l(:label_tasks_select_user_current) %></option>
+      <%- @assignables.each do |s| %>
+          <option value="<%= s.id %>" <%= @user == s.id.to_s ? 'selected=selected' : '' %>><%= s.firstname + ' ' + s.lastname %></option>
+      <%- end %>
+    </select>
+  </div>
+</div>
+
+<div id="burndown">
+</div>
