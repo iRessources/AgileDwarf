@@ -14,8 +14,7 @@ class AdsprintinlController < ApplicationController
       return
     end
 
-    result = sprint.errors.length
-    status = (result == 0 ? 200 : 400)
+    status = (sprint.errors.empty? ? 200 : 400)
 
     respond_to do |format|
       format.html { render :text => sprint.id, :status => status}

@@ -34,8 +34,7 @@ class AdtaskinlController < ApplicationController
       return
     end
 
-    result = task.errors.length
-    status = (result == 0 ? 200 : 400)
+    status = (task.errors.empty? ? 200 : 400)
 
     respond_to do |format|
       format.html { render :text => task.id, :status => status}
@@ -61,8 +60,7 @@ class AdtaskinlController < ApplicationController
       return
     end
 
-    result = spenttime.errors.length
-    status = (result == 0 ? 200 : 400)
+    status = (spenttime.errors.empty? ? 200 : 400)
 
     respond_to do |format|
       format.html { render :text => spenttime.hours, :status => status }
