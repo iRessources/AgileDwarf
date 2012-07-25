@@ -10,6 +10,7 @@ class AdsprintsController < ApplicationController
     @assignables = {}
     @project.assignable_users.each{|u| @assignables[u.id] = u.firstname + ' ' + u.lastname}
     @project_id = @project.id
+    @plugin_path = File.join(Redmine::Utils.relative_url_root, 'plugin_assets', 'AgileDwarf')
     # TODO: option
     @closed_status = 3
   end

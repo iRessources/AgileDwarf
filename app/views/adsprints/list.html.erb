@@ -17,7 +17,7 @@
         project_id: <%=h @project_id %>,
         protect_against_forgery: <%= protect_against_forgery? ? "true" : "false" %>,
         request_forgery_protection_token: '<%= request_forgery_protection_token %>',
-        plugin_path: '<%= File.join(Redmine::Utils.relative_url_root, 'plugin_assets', 'AgileDwarf') %>',
+        plugin_path: '<%= @plugin_path %>',
         project_users: <%= ActiveSupport::JSON.encode(@assignables) %>,
         form_authenticity_token: '<%= form_authenticity_token %>',
         lang:
@@ -56,8 +56,8 @@
     <div class='sprints_panel'>
       <div class="sprints_panel_header">
         <h3 class="fl"><%= l(:label_backlog) %></h3>
-        <img class="fr create_sprint" src="<%= Engines::RailsExtensions::AssetHelpers.plugin_asset_path('AgileDwarf', 'images', 'add_sprint.png') %>" title="<%= l(:label_sprints_title_add_sprint) %>"/>
-        <img class="fr add_task" src="<%= Engines::RailsExtensions::AssetHelpers.plugin_asset_path('AgileDwarf', 'images', 'add_task.png') %>" title="<%= l(:label_sprints_title_add_task) %>"/>
+        <img class="fr create_sprint" src="<%= File.join(@plugin_path, 'images', 'add_sprint.png') %>" title="<%= l(:label_sprints_title_add_sprint) %>"/>
+        <img class="fr add_task" src="<%= File.join(@plugin_path, 'images', 'add_task.png') %>" title="<%= l(:label_sprints_title_add_task) %>"/>
       </div>
       <div class="task_list" id="column.backlog">
         <%= render :partial => "task", :collection => @backlog %>
@@ -79,9 +79,9 @@
       <span class="fl sprint_start"></span>
       <span class="fl sprint_end"></span>
       <h3 class="fl sprint_name"><%= l(:label_sprints_placeholder_name) %></h3>
-      <img class="fr add_task" src="<%= Engines::RailsExtensions::AssetHelpers.plugin_asset_path('AgileDwarf', 'images', 'add_task.png') %>" title="<%= l(:label_sprints_title_add_task) %>"/>
-      <img class="fr fold_sprint" src="<%= Engines::RailsExtensions::AssetHelpers.plugin_asset_path('AgileDwarf', 'images', 'fold_sprint.png') %>" title="<%= l(:label_sprints_title_fold) %>"/>
-      <img class="fr close_sprint" src="<%= Engines::RailsExtensions::AssetHelpers.plugin_asset_path('AgileDwarf', 'images', 'close_sprint.png') %>" title="<%= l(:label_sprints_title_close) %>"/>
+      <img class="fr add_task" src="<%= File.join(@plugin_path, 'images', 'add_task.png') %>" title="<%= l(:label_sprints_title_add_task) %>"/>
+      <img class="fr fold_sprint" src="<%= File.join(@plugin_path, 'images', 'fold_sprint.png') %>" title="<%= l(:label_sprints_title_fold) %>"/>
+      <img class="fr close_sprint" src="<%= File.join(@plugin_path, 'images', 'close_sprint.png') %>" title="<%= l(:label_sprints_title_close) %>"/>
       <span class="sprint_description"><%= l(:label_sprints_placeholder_desc) %></span>
     </div>
     <div class="task_list">
@@ -94,7 +94,7 @@
 <div id="task_template" class="hidden">
     <div class="sc_task new">
       <div class="fl task_no"></div>
-      <div class="fl task_desc"><img src="<%= Engines::RailsExtensions::AssetHelpers.plugin_asset_path('AgileDwarf', 'images', 'task_desc.png') %>"/></div>
+      <div class="fl task_desc"><img src="<%= File.join(@plugin_path, 'images', 'task_desc.png') %>"/></div>
       <div class="task_subject"></div>
       <div class="task_estimate fl"></div>
       <div class="task_owner fr"></div>

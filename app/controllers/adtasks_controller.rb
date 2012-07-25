@@ -24,6 +24,8 @@ class AdtasksController < ApplicationController
     user = @user = params[:user] || 'current'
     user = nil if @user == 'all'
 
+    @plugin_path = File.join(Redmine::Utils.relative_url_root, 'plugin_assets', 'AgileDwarf')
+
     # new + in progress + resolved
     # TODO: add option for statuses
     @columns = [SprintsTasks.get_tasks_by_status(@project, 1, sprint, user),

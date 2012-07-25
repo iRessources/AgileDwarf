@@ -1,6 +1,6 @@
 <div id="task.<%=h task.id %>" class="sc_task">
   <div class="fl task_no"><a href="/issues/<%=h task.id %>">#<%=h task.id %></a></div>
-  <div class="fl task_desc"><img src="<%= Engines::RailsExtensions::AssetHelpers.plugin_asset_path('AgileDwarf', 'images', 'task_desc.png') %>"/></div>
+  <div class="fl task_desc"><img src="<%= File.join(@plugin_path, 'images', 'task_desc.png') %>"/></div>
   <div class="task_subject" title="<%=h task.subject %>"><%=h task.subject %></div>
   <div class="task_row">
       <div class="task_doneratio_slide"></div>

@@ -3,9 +3,9 @@
     <span class="fl sprint_start"><%= sprint['ir_start_date'] || l(:label_sprints_placeholder_startdate) %></span>
     <span class="fl sprint_end"><%= sprint['ir_end_date'] || l(:label_sprints_placeholder_enddate) %></span>
     <h3 class="fl sprint_name"><%= sprint.name %></h3>
-    <img class="fr add_task" src="<%= Engines::RailsExtensions::AssetHelpers.plugin_asset_path('AgileDwarf', 'images', 'add_task.png') %>" title="<%= l(:label_sprints_title_add_task) %>"/>
-    <img class="fr fold_sprint" src="<%= Engines::RailsExtensions::AssetHelpers.plugin_asset_path('AgileDwarf', 'images', 'fold_sprint.png') %>" title="<%= l(:label_sprints_title_fold) %>"/>
-    <img class="fr close_sprint" src="<%= Engines::RailsExtensions::AssetHelpers.plugin_asset_path('AgileDwarf', 'images', sprint.status == 'closed' ? 'closed_sprint.png' : 'close_sprint.png') %>" title="<%= l(:label_sprints_title_close) %>"/>
+    <img class="fr add_task" src="<%= File.join(@plugin_path, 'images', 'add_task.png') %>" title="<%= l(:label_sprints_title_add_task) %>"/>
+    <img class="fr fold_sprint" src="<%= File.join(@plugin_path, 'images', 'fold_sprint.png') %>" title="<%= l(:label_sprints_title_fold) %>"/>
+    <img class="fr close_sprint" src="<%= File.join(@plugin_path, 'images', sprint.status == 'closed' ? 'closed_sprint.png' : 'close_sprint.png') %>" title="<%= l(:label_sprints_title_close) %>"/>
     <span class="sprint_description"><%= sprint['description'].blank? ? l(:label_sprints_placeholder_desc) : sprint['description'] %></span>
   </div>
   <div class="task_list">
