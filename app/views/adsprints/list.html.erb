@@ -17,7 +17,7 @@
         project_id: <%=h @project_id %>,
         protect_against_forgery: <%= protect_against_forgery? ? "true" : "false" %>,
         request_forgery_protection_token: '<%= request_forgery_protection_token %>',
-        plugin_path: '<%= Redmine::Utils.relative_url_root + '/' + Engines.plugins['AgileDwarf'].public_asset_directory %>',
+        plugin_path: '<%= File.join(Redmine::Utils.relative_url_root, 'plugin_assets', 'AgileDwarf') %>',
         project_users: <%= ActiveSupport::JSON.encode(@assignables) %>,
         form_authenticity_token: '<%= form_authenticity_token %>',
         lang:
