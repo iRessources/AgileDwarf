@@ -2,7 +2,7 @@ require 'redmine'
 
 require 'scrum_enabled_module_patch'
 
-Redmine::Plugin.register :redmine_scrum do
+Redmine::Plugin.register :AgileDwarf do
   name 'Redmine Scrum plugin'
   author 'Mark Ablovacky'
   description 'Scrum support for Redmine'
