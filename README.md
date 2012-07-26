@@ -5,22 +5,22 @@ INSTALLATION INSTRUCTIONS
 
 - Download the package from https://github.com/iRessources/AgileDwarf
 
-for Rails 2.x: unpack it into #{RAILS_ROOT}/plugins
+for Redmine 2.x: unpack it into #{RAILS_ROOT}/plugins
 
-for Rails 1.x: unpack it into #{RAILS_ROOT}/vendor/plugins
+for Redmine 1.x: unpack it into #{RAILS_ROOT}/vendor/plugins
 
 OR instead of downloading and unpacking
 
-execute git clone https://github.com/iRessources/AgileDwarf.git
+execute git clone https://github.com/iRessources/AgileDwarf.git at corresponding folder.
 
-- In #{RAILS_ROOT} run the command rake redmine:plugins:migrate RAILS_ENV=production
+- In #{RAILS_ROOT} run the command "rake redmine:plugins:migrate"
   
 - Restart Redmine.
 ____________________________________________________________________________________
 
-Agile Dwarf plugin implements the agile method based on pre-estimating every task in hours (as opposed to in points). 
+Agile Dwarf plugin implements the agile method, based on pre-estimating every task in hours (as opposed to in points). 
 
-It adds 3 new tabs to your Redmine:
+It adds 3 new tabs into your Redmine:
 
 'Sprints' is intended for strategical planning or long-term management of backlog and sprints:
 - Quick backlog issues creation
