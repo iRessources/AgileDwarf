@@ -4,8 +4,8 @@ ________________________________________________________________________________
 INSTALLATION INSTRUCTIONS
 
 1. Download the package from https://github.com/iRessources/AgileDwarf 
-    for Rails 2.x: unpack it into #{RAILS_ROOT}/plugins
-    for Rails 1.x: unpack it into #{RAILS_ROOT}/vendor/plugins
+for Rails 2.x: unpack it into #{RAILS_ROOT}/plugins
+for Rails 1.x: unpack it into #{RAILS_ROOT}/vendor/plugins
 OR instead of downloading and unpacking
     execute git clone https://github.com/iRessources/AgileDwarf.git
 
