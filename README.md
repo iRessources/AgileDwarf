@@ -11,16 +11,16 @@ for Redmine 1.x: unpack it into #{RAILS_ROOT}/vendor/plugins
 
 OR instead of downloading and unpacking
 
-execute git clone https://github.com/iRessources/AgileDwarf.git at corresponding folder.
+execute git clone https://github.com/iRessources/AgileDwarf.git in corresponding folder.
 
 - In #{RAILS_ROOT} run the command "rake redmine:plugins:migrate"
   
 - Restart Redmine.
 ____________________________________________________________________________________
 
-Agile Dwarf plugin implements the agile method, based on pre-estimating every task in hours (as opposed to in points). 
+Agile Dwarf plugin implements the agile method based on pre-estimating every task in hours (as opposed to in points). 
 
-It adds 3 new tabs into your Redmine:
+It adds 3 new tabs to your Redmine:
 
 'Sprints' is intended for strategical planning or long-term management of backlog and sprints:
 - Quick backlog issues creation
