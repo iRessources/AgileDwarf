@@ -3,7 +3,7 @@ ________________________________________________________________________________
 
 INSTALLATION INSTRUCTIONS
 
-1. Download the package from https://github.com/iRessources/AgileDwarf
+- Download the package from https://github.com/iRessources/AgileDwarf
 
 for Rails 2.x: unpack it into #{RAILS_ROOT}/plugins
 
@@ -13,9 +13,9 @@ OR instead of downloading and unpacking
 
 execute git clone https://github.com/iRessources/AgileDwarf.git
 
-2. In #{RAILS_ROOT} run the command rake redmine:plugins:migrate RAILS_ENV=production
+- In #{RAILS_ROOT} run the command rake redmine:plugins:migrate RAILS_ENV=production
   
-3. Restart Redmine.
+- Restart Redmine.
 ____________________________________________________________________________________
 
 Agile Dwarf plugin implements the agile method based on pre-estimating every task in hours (as opposed to in points). 
