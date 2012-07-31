@@ -9,6 +9,8 @@ for Redmine 2.x: unpack it into #{RAILS_ROOT}/plugins
 
 for Redmine 1.x: unpack it into #{RAILS_ROOT}/vendor/plugins
 
+- Name the unpacked folder 'AgileDwarf'
+
 OR instead of downloading and unpacking
 
 execute git clone https://github.com/iRessources/AgileDwarf.git in corresponding folder.
