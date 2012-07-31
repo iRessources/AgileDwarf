@@ -19,6 +19,13 @@
         request_forgery_protection_token: '<%= request_forgery_protection_token %>',
         form_authenticity_token: '<%= form_authenticity_token %>',
         project_users: <%= ActiveSupport::JSON.encode(@assignables_list).html_safe %>,
+        urls:
+        {
+            'taskinline': '<%= url_for(:controller => 'adtaskinl', :action => 'inplace') %>',
+            'tasktip': '<%= url_for(:controller => 'adtaskinl', :action => 'tooltip') %>',
+            'taskspent': '<%= url_for(:controller => 'adtaskinl', :action => 'spent') %>',
+            'self': '<%= url_for(:controller => 'adtasks', :action => 'list') %>'
+        },
         lang:
         {
             task_subject_placeholder: '<%= l(:label_sprints_placeholder_subject) %>',

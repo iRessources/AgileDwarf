@@ -15,6 +15,11 @@ var Sprints = function ()
         return settings.project_users;
     };
 
+    obj.getUrl = function (page)
+    {
+        return settings.urls[page];
+    };
+
     obj.getProjectId = function ()
     {
         return settings.project_id;
@@ -35,7 +40,7 @@ var Sprints = function ()
         return url;
     };
 
-    obj.bindDnD = function (onChangeColumn, redraw)
+    obj.bindDnD = function (onChangeColumn, redraw, onChangeColumnPos)
     {
         var item, newList, oldList, oldPosition;
         if (redraw)
@@ -73,6 +78,8 @@ var Sprints = function ()
                     // really move?
                     if (oldPosition != newPos)
                     {
+                        if (typeof onChangeColumnPos != 'undefined')
+                            onChangeColumnPos(newList, params, item);
                         $.ajax(
                         {
                             url: "/adtaskinl/update",

@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+require 'daemons'
+
+file = File.join(File.expand_path(__FILE__), '..', 'coop_server.rb')
+Daemons.run(file, :app_name => "cockatoo", :backtrace => true, :log_output => false, :dir_mode => :normal)

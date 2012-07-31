@@ -18,6 +18,15 @@
         protect_against_forgery: <%= protect_against_forgery? ? "true" : "false" %>,
         request_forgery_protection_token: '<%= request_forgery_protection_token %>',
         plugin_path: '<%= @plugin_path %>',
+        urls:
+        {
+            'taskinline': '<%= url_for(:controller => 'adtaskinl', :action => 'inplace') %>',
+            'tasktip': '<%= url_for(:controller => 'adtaskinl', :action => 'tooltip') %>',
+            'taskcreate': '<%= url_for(:controller => 'adtaskinl', :action => 'create') %>',
+            'issues': '<%= url_for(:controller => 'issues') %>',
+            'sprintinline': '<%= url_for(:controller => 'adsprintinl', :action => 'inplace') %>',
+            'sprintcreate': '<%= url_for(:controller => 'adsprintinl', :action => 'create') %>'
+        },
         project_users: <%= ActiveSupport::JSON.encode(@assignables).html_safe %>,
         form_authenticity_token: '<%= form_authenticity_token %>',
         lang:

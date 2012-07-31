@@ -125,6 +125,12 @@
     background-color: #bce398;
 }
 
+.sc_task.changed
+{
+    background-color: #90cee3;
+}
+
+
 .sprint_description
 {
     display: block;

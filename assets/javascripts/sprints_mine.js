@@ -30,9 +30,9 @@ Sprints.ready(function()
             submitdata: function (val, settings) {return {id: task.id};},
             id: 'element_id'
         };
-        $('.task_subject', el).editable('/adtaskinl/inplace', $.extend({name: 'subject', type: 'ptext', placeholder: Sprints.l('task_subject_placeholder')}, taskInlineOpts));
+        $('.task_subject', el).editable(Sprints.getUrl('taskinline'), $.extend({name: 'subject', type: 'ptext', placeholder: Sprints.l('task_subject_placeholder')}, taskInlineOpts));
         // done ratio
-        $('.task_doneratio_value', el).editable('/adtaskinl/inplace', $.extend({name: 'done_ratio', type: 'ptext', width: 50, callback: function (res, settings)
+        $('.task_doneratio_value', el).editable(Sprints.getUrl('taskinline'), $.extend({name: 'done_ratio', type: 'ptext', width: 50, callback: function (res, settings)
         {
             res = +res;
             $(this).siblings('.task_row').children('.task_doneratio_slide').slider('value', res);
@@ -41,7 +41,7 @@ Sprints.ready(function()
             task.done = timeNew;
         }}, taskInlineOpts));
         // estimate
-        $('.task_estimate', el).editable('/adtaskinl/inplace', $.extend({name: 'estimated_hours', type: 'ptext', placeholder: Sprints.l('task_estimate_placeholder'), callback: function (res, settings)
+        $('.task_estimate', el).editable(Sprints.getUrl('taskinline'), $.extend({name: 'estimated_hours', type: 'ptext', placeholder: Sprints.l('task_estimate_placeholder'), callback: function (res, settings)
         {
             // update estimate
             res = +res || 0;
@@ -53,7 +53,7 @@ Sprints.ready(function()
             task.done = timeNew;
         }}, taskInlineOpts));
         // spent
-        $('.task_add_spent_value', el).editable('/adtaskinl/spent', $.extend({name: 'hours', type: 'text', placeholder: 'X', width: 50, event: 'addspent', callback: function (res, settings)
+        $('.task_add_spent_value', el).editable(Sprints.getUrl('taskspent'), $.extend({name: 'hours', type: 'text', placeholder: 'X', width: 50, event: 'addspent', callback: function (res, settings)
         {
             $(this).html('X');
             var spent = el.find('.task_spent_time');
@@ -63,7 +63,7 @@ Sprints.ready(function()
             task.spent = timeNew;
         }}, taskInlineOpts));
         // owner
-        $('.task_owner', el).editable('/adtaskinl/inplace', $.extend({name: 'assigned_to_id', type: 'select', onblur : 'submit', placeholder: Sprints.l('task_owner_placeholder'),
+        $('.task_owner', el).editable(Sprints.getUrl('taskinline'), $.extend({name: 'assigned_to_id', type: 'select', onblur : 'submit', placeholder: Sprints.l('task_owner_placeholder'),
             data: Sprints.getProjectUsers(), callback: function (res, settings)
             {
                 panel.times.updateTaskOwner(task, res).update();
@@ -85,7 +85,7 @@ Sprints.ready(function()
                     return ;
                 $.ajax(
                 {
-                    url: '/adtaskinl/inplace',
+                    url: Sprints.getUrl('taskinline'),
                     data: {id: self.parents('.sc_task').prop('id').substr('task.'.length), done_ratio: ui.value},
                     type: 'POST',
                     success: function (res)
@@ -114,7 +114,7 @@ Sprints.ready(function()
                 text: '...',
                 ajax:
                 {
-                    url: '/adtaskinl/tooltip',
+                    url: Sprints.getUrl('tasktip'),
                     data: {id: task.id}
                 }
             },
@@ -267,11 +267,11 @@ Sprints.ready(function()
     // selections
     $('#sprints_selection select').change(function ()
     {
-        location.href = '/adtasks/list?project_id=' + Sprints.getProjectId() + '&sprint=' + $(this).val() + '&user=' +  $('#user_selection select').val();
+        location.href = Sprints.getUrl('self') + '?project_id=' + Sprints.getProjectId() + '&sprint=' + $(this).val() + '&user=' +  $('#user_selection select').val();
     });
     $('#user_selection select').change(function ()
     {
-        location.href = '/adtasks/list?project_id=' + Sprints.getProjectId() + '&sprint=' + $('#sprints_selection select').val() + '&user=' +  $(this).val();
+        location.href = Sprints.getUrl('self') + '?project_id=' + Sprints.getProjectId() + '&sprint=' + $('#sprints_selection select').val() + '&user=' +  $(this).val();
     });
 
     // highlighting

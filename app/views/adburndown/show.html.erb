@@ -27,7 +27,11 @@
     }, <%=raw @spent %>, <%=raw @tasks %>, <%=raw @changes %>);
     Burndown.setSettings(
     {
-        project_id: <%=h @project_id %>
+        project_id: <%=h @project_id %>,
+        urls:
+        {
+            'show': '<%= url_for(:controller => 'adburndown', :action => 'show') %>'
+        }
     });
 </script>
 

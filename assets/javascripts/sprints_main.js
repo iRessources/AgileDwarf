@@ -1,3 +1,126 @@
+Sprints.Coop = function ()
+{
+    var o = {};
+    var sprints;
+
+    function getHash()
+    {
+        var hashStr = '';
+        for (var i = 0, slen = sprints.length; i < slen; i++)
+        {
+            var sprint = sprints[i];
+            hashStr += sprint.id + sprint.name + sprint.startdate + sprint.enddate + sprint.desc;
+            for (var task_id in sprint.tasks)
+            {
+                if (!sprint.tasks.hasOwnProperty(task_id))
+                    continue;
+                var task = sprint.tasks[task_id];
+                hashStr += task.id + task.owner + task.subject + task.time;
+            }
+        }
+
+        var hash = 0;
+        var ch;
+        for (i = 0; i < hashStr.length; i++)
+        {
+            ch = hashStr.charCodeAt(i);
+            hash = ((hash << 5) - hash) + ch;
+            hash = hash & hash;
+        }
+        return hash;
+    }
+
+    o.update = function (id, type, action, value)
+    {
+/*
+        $.ajax(
+        {
+            cache: false,
+            url: '/coop/send',
+            type: "GET",
+            dataType: "json",
+            data : {pid: Sprints.getProjectId(), tag: getHash(), id: id, type: type, value: value, action: action}
+        });
+*/
+    };
+
+    o.start = function (sprAr)
+    {
+/*
+        sprints = sprAr;
+
+        function waitEvents()
+        {
+            $.ajax(
+            {
+                cache: false,
+                url: '/coop/check',
+                type: "GET",
+                dataType: "json",
+                data : {pid: Sprints.getProjectId(), tag: getHash()},
+                success : function(data)
+                {
+                    if (data && data.hasOwnProperty('type'))
+                    {
+                        if (data.type == 'task')
+                        {
+                            var task = $('#task\\.' + data.id).get(0).task;
+                            switch (data.action)
+                            {
+                                case 'subject':
+                                    task.setSubject(data.value, true);
+                                    break;
+                                case 'owner':
+                                    task.setOwner(data.value, true);
+                                    break;
+                                case 'time':
+                                    task.setTime(data.value, true);
+                                    break;
+                                case 'pos':
+                                    var posVal = data.value.split('.');
+                                    if (posVal.length > 1 && posVal[1].length)
+                                        var sprint = $('#sprint\\.' + (+posVal[1])).get(0).sprint;
+                                    else
+                                        sprint = $('.sprints_column:eq(0) .sprints_panel').get(0).sprint;
+
+                                    task.setPos(+posVal[0], sprint, true);
+                                    break;
+                            }
+                            task.element.addClass('changed');
+                            (function (t)
+                            {
+                                if (typeof t.timer != 'undefined')
+                                    clearTimeout(t.timer);
+                                t.timer = setTimeout(function ()
+                                {
+                                    t.removeClass('changed');
+                                    t.timer = undefined;
+                                }, 2000);
+                            })(task.element);
+                        } else
+                        {
+                        }
+
+                        $.ajax(
+                        {
+                            url: '/coop/ack',
+                            type: "GET",
+                            data : {pid: Sprints.getProjectId(), seq: data.seq}
+                        });
+                    }
+                    waitEvents();
+                }
+            });
+        }
+
+        setTimeout(function() {waitEvents()}, 10000);
+        // waitEvents()
+*/
+    };
+
+    return o;
+}();
+
 // Task object
 Sprints.Task = function (el, sprint, isNew)
 {
@@ -22,10 +145,58 @@ Sprints.Task = function (el, sprint, isNew)
 
     // task properties
     this.owner = el.children('.task_owner').text();
+    this.subject = el.children('.task_subject').text();
+    this.pos = el.index();
     this.closed = el.hasClass('closed_task');
     var time = el.children('.task_estimate').text();
     time = +time || 0;
     this.time = time;
+
+    // task property-setters
+    this.setSubject = function (val, redraw)
+    {
+        if (typeof redraw != 'undefined')
+            el.children('.task_subject').text(val);
+        task.subject = val;
+    };
+    this.setTime = function (val, redraw)
+    {
+        if (typeof redraw != 'undefined')
+            el.children('.task_estimate').text(val);
+        var timeNew = +val || 0;
+        sprint.times.updateTaskTime(task, timeNew).update();
+        task.time = timeNew;
+    };
+    this.setOwner = function (val, redraw)
+    {
+        if (typeof redraw != 'undefined')
+            el.children('.task_owner').text(val);
+        sprint.times.updateTaskOwner(task, val).update();
+        task.owner = val;
+    };
+    this.setPos = function (val, sprint, redraw)
+    {
+        if (typeof redraw != 'undefined')
+        {
+            el.detach();
+            if (val > 0)
+                el.insertAfter(sprint.element.children('.task_list').children(':eq(' + (val - 1) + ')'));
+            else
+                sprint.element.children('.task_list').prepend(el);
+        }
+
+        var oldSprint = task.sprint;
+        task.sprint = sprint;
+        // update tasks
+        delete oldSprint.tasks[task.id];
+        sprint.tasks[task.id] = task;
+        // update times
+        sprint.times.addTask(task).update();
+        oldSprint.times.removeTask(task).update();
+
+        task.pos = val;
+    };
+
 
     // register inline
     var taskInlineOpts =
@@ -36,7 +207,7 @@ Sprints.Task = function (el, sprint, isNew)
     isNew = !!isNew;
     if (isNew)
     {
-        $('.task_subject', el).editable('/adtaskinl/inplace', $.extend({name: 'subject', type: 'ptext', placeholder: Sprints.l('task_subject_placeholder'), callback: function(value, settings)
+        $('.task_subject', el).editable(Sprints.getUrl('taskinline'), $.extend({name: 'subject', type: 'ptext', placeholder: Sprints.l('task_subject_placeholder'), callback: function(value, settings)
         {
             var inlineEl = $(this);
             inlineEl.editable('destroy');
@@ -47,20 +218,23 @@ Sprints.Task = function (el, sprint, isNew)
         addTaskInlines(isNew);
     function addTaskInlines()
     {
-        $('.task_subject', el).editable('/adtaskinl/inplace', $.extend({name: 'subject', type: 'ptext', placeholder: Sprints.l('task_subject_placeholder')}, taskInlineOpts));
-
-        $('.task_estimate', el).editable('/adtaskinl/inplace', $.extend({name: 'estimated_hours', type: 'ptext', placeholder: Sprints.l('task_estimate_placeholder'), callback: function (res, settings)
+        $('.task_subject', el).editable(Sprints.getUrl('taskinline'), $.extend({name: 'subject', type: 'ptext', placeholder: Sprints.l('task_subject_placeholder'), callback: function (res, settings)
         {
-            var timeNew = +res || 0;
-            sprint.times.updateTaskTime(task, timeNew).update();
-            task.time = timeNew;
+            task.setSubject(res);
+            Sprints.Coop.update(task.id, 'task', 'subject', res);
         }}, taskInlineOpts));
 
-        $('.task_owner', el).editable('/adtaskinl/inplace', $.extend({name: 'assigned_to_id', type: 'select', onblur : 'submit', placeholder: Sprints.l('task_owner_placeholder'),
+        $('.task_estimate', el).editable(Sprints.getUrl('taskinline'), $.extend({name: 'estimated_hours', type: 'ptext', placeholder: Sprints.l('task_estimate_placeholder'), callback: function (res, settings)
+        {
+            task.setTime(res);
+            Sprints.Coop.update(task.id, 'task', 'time', res);
+        }}, taskInlineOpts));
+
+        $('.task_owner', el).editable(Sprints.getUrl('taskinline'), $.extend({name: 'assigned_to_id', type: 'select', onblur : 'submit', placeholder: Sprints.l('task_owner_placeholder'),
             data: Sprints.getProjectUsers(), callback: function (res, settings)
             {
-                sprint.times.updateTaskOwner(task, res).update();
-                task.owner = res;
+                task.setOwner(res);
+                Sprints.Coop.update(task.id, 'task', 'owner', res);
             }}, taskInlineOpts));
     }
 
@@ -72,7 +246,7 @@ Sprints.Task = function (el, sprint, isNew)
             text: '...',
             ajax:
             {
-                url: '/adtaskinl/tooltip',
+                url: Sprints.getUrl('tasktip'),
                 data: {id: task.id}
             }
         },
@@ -90,7 +264,7 @@ Sprints.Task = function (el, sprint, isNew)
         });
 
 
-        api.elements.content.editable('/adtaskinl/inplace', $.extend({name: 'description', type: 'textarea', rows: 10, cols: 20, submit: '<br/><button>OK</button>', cancel: '<button>Cancel</button>',
+        api.elements.content.editable(Sprints.getUrl('taskinline'), $.extend({name: 'description', type: 'textarea', rows: 10, cols: 20, submit: '<br/><button>OK</button>', cancel: '<button>Cancel</button>',
                                                                   onblur: 'submit', event: 'taskdescedit', callback: function (res, settings)
         {
             api.set({'hide.event': 'mouseleave'});
@@ -164,9 +338,8 @@ Sprints.Sprint = function (el, isNew)
 
         obj.updateTaskOwner = function (task, newOwner)
         {
-            if (!checkOwner(task.owner))
-                return obj;
-            data[task.owner] -= task.time;
+            if (checkOwner(task.owner))
+                data[task.owner] -= task.time;
             data[newOwner] += task.time;
             return obj;
         };
@@ -202,7 +375,7 @@ Sprints.Sprint = function (el, isNew)
     {
         $.ajax(
         {
-            url: "/adtaskinl/create",
+            url: Sprints.getUrl('taskcreate'),
             data:
             {
                 subject: Sprints.l('task_subject_placeholder'),
@@ -213,7 +386,7 @@ Sprints.Sprint = function (el, isNew)
                 var task = $('#task_template').children(':eq(0)').clone().prependTo($('.task_list', el));
                 task.prop('id', 'task.' + data);
                 el.sortable("refresh");
-                task.children('.task_no').html('<a href="/issues/' + data + '">#' + data + '</a>');
+                task.children('.task_no').html('<a href="' + Sprints.getUrl('issues') + '/' + data + '">#' + data + '</a>');
                 var taskObj = new Sprints.Task(task, sprint, true);
                 sprint.tasks[task.id] = taskObj;
                 sprint.times.addTask(taskObj);
@@ -247,7 +420,7 @@ Sprints.Sprint = function (el, isNew)
         {
             $.ajax(
             {
-                url: "/adsprintinl/inplace",
+                url: Sprints.getUrl('sprintinline'),
                 data:
                 {
                     id: sprint.id,
@@ -354,15 +527,15 @@ Sprints.Sprint = function (el, isNew)
     }
     function addSprintInlines(expand)
     {
-        $('.sprint_end', el).editable('/adsprintinl/inplace', $.extend({}, sprintInlineOpts, {name: 'ir_end_date', type: 'datepicker'}));
-        $('.sprint_start', el).editable('/adsprintinl/inplace', $.extend({}, sprintInlineOpts, {name: 'ir_start_date', type: 'datepicker'}));
-        $('.sprint_name', el).editable('/adsprintinl/inplace', $.extend({}, sprintInlineOpts, {name: 'name', type: 'text', callback: function (val, settings)
+        $('.sprint_end', el).editable(Sprints.getUrl('sprintinline'), $.extend({}, sprintInlineOpts, {name: 'ir_end_date', type: 'datepicker'}));
+        $('.sprint_start', el).editable(Sprints.getUrl('sprintinline'), $.extend({}, sprintInlineOpts, {name: 'ir_start_date', type: 'datepicker'}));
+        $('.sprint_name', el).editable(Sprints.getUrl('sprintinline'), $.extend({}, sprintInlineOpts, {name: 'name', type: 'text', callback: function (val, settings)
         {
             $('#sprints_selection_el option[value=' + sprint.id + ']').text(val);
             if (typeof sprintInlineOpts.callback != 'undefined')
                 sprintInlineOpts.callback.apply(this, [val, settings]);
         }}));
-        $('.sprint_description', el).editable('/adsprintinl/inplace', $.extend({}, sprintInlineOpts, {name: 'description', type: 'textarea', rows: 2, cols: 50, onblur : 'submit',
+        $('.sprint_description', el).editable(Sprints.getUrl('sprintinline'), $.extend({}, sprintInlineOpts, {name: 'description', type: 'textarea', rows: 2, cols: 50, onblur : 'submit',
                                                                                               placeholder: Sprints.l('sprint_description_placeholder')}));
         if (expand)
         {
@@ -377,16 +550,17 @@ Sprints.Sprint = function (el, isNew)
     Sprints.bindDnD(function(newList, params, oldList, item)
     {
         var newSprint = newList.parents('.sprints_panel')[0].sprint;
-        var oldSprint = oldList.parents('.sprints_panel')[0].sprint;
-        params.fixed_version_id = newSprint.id;
         var task = item[0].task;
-        // update tasks
-        delete oldSprint.tasks[task.id];
-        newSprint.tasks[task.id] = task;
-        // update times
-        newSprint.times.addTask(task).update();
-        oldSprint.times.removeTask(task).update();
-    }, isNew);
+        params.fixed_version_id = newSprint.id;
+        task.setPos(item.index(), newSprint);
+        Sprints.Coop.update(task.id, 'task', 'pos', item.index() + '.' + newSprint.id);
+    }, isNew, function(list, params, item)
+    {
+        var task = item[0].task;
+        var sprint = task.sprint;
+        task.setPos(item.index(), sprint);
+        Sprints.Coop.update(task.id, 'task', 'pos', item.index() + '.' + sprint.id);
+    });
 };
 
 Sprints.ready(function()
@@ -398,6 +572,11 @@ Sprints.ready(function()
         sprints.push(new Sprints.Sprint(this));
     });
 
+    sprints.sort(function (a, b)
+    {
+        return a.id - b.id;
+    });
+
     // create sprint button
     $('.create_sprint').click(function ()
     {
@@ -406,7 +585,7 @@ Sprints.ready(function()
                    date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
         $.ajax(
         {
-            url: "/adsprintinl/create",
+            url: Sprints.getUrl('sprintcreate'),
             data: {name: name},
             success: function (data)
             {
@@ -450,4 +629,6 @@ Sprints.ready(function()
     {
         $(this).removeClass('active');
     });
+
+    Sprints.Coop.start(sprints);
 });
