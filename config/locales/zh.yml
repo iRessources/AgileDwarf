@@ -1,0 +1,35 @@
+# Simplified Chinese strings go here for Rails i18n
+zh:
+  label_menu_sprints: Sprints
+  label_menu_mytasks: 任务
+  label_menu_burndown: 生成图表
+  label_burndown_series_spent: 已用时间
+  label_burndown_series_rest: 剩余预估时间
+  label_burndown_series_total: 总计
+  label_burndown_axis_y_name: 小时
+  label_backlog: Backlog
+  label_estimated: "预估 "
+  label_task_field_description_empty: 无描述
+  label_sprints_placeholder_name: "Sprint "
+  label_sprints_placeholder_startdate: "[开始日期]"
+  label_sprints_placeholder_enddate: "[结束日期]"
+  label_sprints_placeholder_estimated: "[预估]"
+  label_sprints_placeholder_subject: "[主题]"
+  label_sprints_placeholder_owner: "[所有者]"
+  label_sprints_placeholder_done: "[完成率]"
+  label_sprints_placeholder_desc: "[描述]"
+  label_sprints_description_panel_header: 描述
+  label_sprints_select_all: 全选
+  label_sprints_select_none: 全不选
+  label_sprints_showclosed: 显示已关闭的Sprints
+  label_sprints_filter: 显示Sprint
+  label_sprints_title_fold: 收拢
+  label_sprints_title_add_task: 添加任务
+  label_sprints_title_add_sprint: 添加Sprint
+  label_sprints_title_close: 关闭Sprint
+  label_sprints_dialogs_closeerror_title: 无法关闭当前Sprint
+  label_sprints_dialogs_closeerror_content: 您只能关闭所有任务已解决的Sprint.
+  label_sprints_dialogs_closeconfirm_title: 关闭确认
+  label_sprints_dialogs_closeconfirm_content: 确定关闭当前Sprint？您可以在任何时刻查看Sprint（包括已关闭的）。
+  label_tasks_select_user_current: 我
+  label_tasks_select_user_all: 所有人
