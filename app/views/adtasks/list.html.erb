@@ -61,28 +61,28 @@
 </div>
 
 <div id="tasks">
-    <div class='task_panel' id="column.1">
-      <h3>New</h3>
+    <div class='task_panel' id="column.<%= @columns[0][:id] %>">
+      <h3><%=h @statuses[@columns[0][:id]] %></h3>
       <div class="task_list">
-        <%= render :partial => "task", :collection => @columns[0] %>
+        <%= render :partial => "task", :collection => @columns[0][:tasks] %>
       </div>
       <div class="time_list fr">
       </div>
     </div>
 
-    <div class='task_panel' id="column.2">
-      <h3>In progress</h3>
+    <div class='task_panel' id="column.<%= @columns[1][:id] %>">
+      <h3><%=h @statuses[@columns[1][:id]] %></h3>
       <div class="task_list">
-        <%= render :partial => "task", :collection => @columns[1] %>
+        <%= render :partial => "task", :collection => @columns[1][:tasks] %>
       </div>
       <div class="time_list fr">
       </div>
     </div>
 
-    <div class='task_panel' id="column.3">
-      <h3>Resolved</h3>
+    <div class='task_panel' id="column.<%= @columns[2][:id] %>">
+      <h3><%=h @statuses[@columns[2][:id]] %></h3>
       <div class="task_list">
-        <%= render :partial => "task", :collection => @columns[2] %>
+        <%= render :partial => "task", :collection => @columns[2][:tasks] %>
       </div>
       <div class="time_list fr">
       </div>

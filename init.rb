@@ -6,8 +6,17 @@ Redmine::Plugin.register :AgileDwarf do
   name 'Agile dwarf plugin'
   author 'Mark Ablovacky'
   description 'Agile for Redmine'
-  version '0.0.2'
+  version '0.0.3'
   url ''
+
+  settings :default => {
+      :tracker => 1,
+      :activity => 1,
+      :stclosed => 1,
+      :stcolumn1 => 1,
+      :stcolumn2 => 2,
+      :stcolumn3 => 3,
+  }, :partial => 'shared/settings'
 
   project_module :scrum do
     permission :sprints, {:adsprints => [:list], :adtaskinl => [:update, :inplace, :create, :tooltip], :adsprintinl => [:create, :inplace]}

@@ -27,9 +27,12 @@ class AdtasksController < ApplicationController
     @plugin_path = File.join(Redmine::Utils.relative_url_root, 'plugin_assets', 'AgileDwarf')
 
     # new + in progress + resolved
-    # TODO: add option for statuses
-    @columns = [SprintsTasks.get_tasks_by_status(@project, 1, sprint, user),
-                SprintsTasks.get_tasks_by_status(@project, 2, sprint, user), SprintsTasks.get_tasks_by_status(@project, 3, sprint, user)]
+    status_ids = [Setting.plugin_AgileDwarf[:stcolumn1].to_i, Setting.plugin_AgileDwarf[:stcolumn2].to_i, Setting.plugin_AgileDwarf[:stcolumn3].to_i]
+    @statuses = {}
+    IssueStatus.find_all_by_id(status_ids).each {|x| @statuses[x.id] = x.name}
+    @columns = [{:tasks => SprintsTasks.get_tasks_by_status(@project, status_ids[0], sprint, user), :id => status_ids[0]},
+                {:tasks => SprintsTasks.get_tasks_by_status(@project, status_ids[1], sprint, user), :id => status_ids[1]},
+                {:tasks => SprintsTasks.get_tasks_by_status(@project, status_ids[2], sprint, user), :id => status_ids[2]}]
   end
 
   private

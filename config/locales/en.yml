@@ -33,3 +33,9 @@ en:
   label_sprints_dialogs_closeconfirm_content: Do you really want to close this sprint? Anyway you can at any moment see all sprints including closed.
   label_tasks_select_user_current: Me
   label_tasks_select_user_all: All
+  label_settings_tracker: Default tracker for new tasks
+  label_settings_activity: Default activity for spent time
+  label_settings_closedstatus: Status, that marks task as closed
+  label_settings_column1status: Status for 1st column in Tasks
+  label_settings_column2status: Status for 2nd column in Tasks
+  label_settings_column3status: Status for 3rd column in Tasks

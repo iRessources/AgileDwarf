@@ -23,8 +23,7 @@ class AdtaskinlController < ApplicationController
   def create
     attribs = params.select{|k,v| k != 'id' and SprintsTasks.column_names.include? k }
     attribs = Hash[*attribs.flatten]
-    # TODO: add tracker setting
-    attribs['tracker_id'] = attribs['tracker_id'] || 4
+    attribs['tracker_id'] = attribs['tracker_id'] || Setting.plugin_AgileDwarf[:tracker]
     attribs['author_id'] = User.current.id
     task = SprintsTasks.new(attribs)
     begin
@@ -51,8 +50,8 @@ class AdtaskinlController < ApplicationController
   end
 
   def spent
-    # TODO: add option for activity
-    spenttime = TimeEntry.new({:hours => params[:hours], :activity_id => 9, :user => User.current, :project => @project, :spent_on => Date.today, :issue_id => params[:id]})
+    spenttime = TimeEntry.new({:hours => params[:hours], :activity_id => Setting.plugin_AgileDwarf[:activity], :user => User.current, :project => @project, :spent_on => Date.today,
+                               :issue_id => params[:id]})
     begin
       spenttime.save!
     rescue => e
