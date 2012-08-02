@@ -18,6 +18,9 @@ execute git clone https://github.com/iRessources/AgileDwarf.git in corresponding
 - In #{RAILS_ROOT} run the command "rake redmine:plugins:migrate"
   
 - Restart Redmine.
+ 
+- Change settings for plugin via Administration -> Plugins -> Agile dwarf plugin -> Configure
+
 ____________________________________________________________________________________
 
 Agile Dwarf plugin implements the agile method based on pre-estimating every task in hours (as opposed to in points). 
