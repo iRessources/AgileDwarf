@@ -24,7 +24,7 @@ class AdsprintinlController < ApplicationController
   def inplace
     # element_id filtered too!
     attribs = params.select{|k,v| k != 'id' && k != 'project_id' && Sprints.column_names.include?(k) }
-    attribs.flatten!
+    attribs = attribs.flatten
     param_id = attribs[0]
     attribs = Hash[*attribs]
     sprint = Sprints.find(params[:id])
