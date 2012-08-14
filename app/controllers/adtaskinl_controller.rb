@@ -70,8 +70,9 @@ class AdtaskinlController < ApplicationController
   def inplace
     # element_id filtered too!
     attribs = params.select{|k,v| k != 'id' && k != 'project_id' && SprintsTasks.column_names.include?(k) }
-    param_id = attribs[0][0]
-    attribs = Hash[*attribs.flatten]
+    attribs = attribs.flatten
+    param_id = attribs[0]
+    attribs = Hash[*attribs]
     task = SprintsTasks.find(params[:id], :include => :assigned_to)
     begin
       task.init_journal(User.current)

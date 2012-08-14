@@ -55,6 +55,19 @@ class AdburndownController < ApplicationController
     # restcondchanges = ActiveRecord::Base::sanitize_sql(restcondtasks)
     restcondchanges = ActiveRecord::Base.send(:sanitize_sql, restcondtasks, '')
     ActiveRecord::Base.connection.select_all("select * from (select old_value as value, journalized_id as issueId, prop_key, DATE(journals.created_on) created_on from `journals` inner join journal_details on (journals.id = journal_id) inner join issues on (issues.id = journalized_id) where journalized_type = 'Issue' and property = 'attr' and (prop_key = 'estimated_hours' or prop_key = 'done_ratio') and #{restcondchanges} order by journals.id desc) a group by `issueId`, created_on, prop_key order by created_on desc").each{|row| @changes << row}
+=begin
+    select * from
+    (
+      select old_value as value, journalized_id as issueId, prop_key, DATE(journals.created_on) created_on from `journals`
+        inner join journal_details on (journals.id = journal_id)
+        inner join issues on (issues.id = journalized_id)
+        where journalized_type = 'Issue'
+          and property = 'attr'
+          and (prop_key = 'estimated_hours' or prop_key = 'done_ratio')
+          and #{restcondchanges}
+        order by journals.id desc
+    ) a group by `issueId`, created_on, prop_key order by created_on desc
+=end
     @changes = @changes.to_json
   end
 
