@@ -1,3 +1,6 @@
+<%= javascript_include_tag 'libs/jquery-1.7.2.min.js', :plugin => 'AgileDwarf' %>
+<%= javascript_include_tag 'settings', :plugin => 'AgileDwarf' %>
+
 <p>
   <%= content_tag(:label, l(:label_settings_tracker)) %>
   <%= select_tag("settings[tracker]", options_from_collection_for_select(Tracker.all, :id, :name, Setting.plugin_AgileDwarf[:tracker].to_i)) %>
@@ -14,16 +17,33 @@
 </p>
 
 <p>
-  <%= content_tag(:label, l(:label_settings_column1status)) %>
-  <%= select_tag("settings[stcolumn1]", options_from_collection_for_select(IssueStatus.all, :id, :name, Setting.plugin_AgileDwarf[:stcolumn1].to_i)) %>
+  <%= content_tag(:label, l(:label_settings_columncount)) %>
+  <%= select_tag("settings[stcolumncount]", options_for_select([2, 3, 4, 5], Setting.plugin_AgileDwarf[:stcolumncount].to_i)) %>
 </p>
 
-<p>
-  <%= content_tag(:label, l(:label_settings_column2status)) %>
-  <%= select_tag("settings[stcolumn2]", options_from_collection_for_select(IssueStatus.all, :id, :name, Setting.plugin_AgileDwarf[:stcolumn2].to_i)) %>
-</p>
+<div id="stcolumns">
+    <p>
+      <%= content_tag(:label, l(:label_settings_column1status)) %>
+      <%= select_tag("settings[stcolumn1]", options_from_collection_for_select(IssueStatus.all, :id, :name, Setting.plugin_AgileDwarf[:stcolumn1].to_i)) %>
+    </p>
 
-<p>
-  <%= content_tag(:label, l(:label_settings_column3status)) %>
-  <%= select_tag("settings[stcolumn3]", options_from_collection_for_select(IssueStatus.all, :id, :name, Setting.plugin_AgileDwarf[:stcolumn3].to_i)) %>
-</p>
+    <p>
+      <%= content_tag(:label, l(:label_settings_column2status)) %>
+      <%= select_tag("settings[stcolumn2]", options_from_collection_for_select(IssueStatus.all, :id, :name, Setting.plugin_AgileDwarf[:stcolumn2].to_i)) %>
+    </p>
+
+    <p>
+      <%= content_tag(:label, l(:label_settings_column3status)) %>
+      <%= select_tag("settings[stcolumn3]", options_from_collection_for_select(IssueStatus.all, :id, :name, Setting.plugin_AgileDwarf[:stcolumn3].to_i)) %>
+    </p>
+
+    <p>
+      <%= content_tag(:label, l(:label_settings_column4status)) %>
+      <%= select_tag("settings[stcolumn4]", options_from_collection_for_select(IssueStatus.all, :id, :name, Setting.plugin_AgileDwarf[:stcolumn4].to_i)) %>
+    </p>
+
+    <p>
+      <%= content_tag(:label, l(:label_settings_column5status)) %>
+      <%= select_tag("settings[stcolumn5]", options_from_collection_for_select(IssueStatus.all, :id, :name, Setting.plugin_AgileDwarf[:stcolumn5].to_i)) %>
+    </p>
+</div>

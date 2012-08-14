@@ -1,0 +1,8 @@
+<div class='task_panel' id="column.<%= column[:id] %>">
+  <h3><%=h @statuses[column[:id]] %></h3>
+  <div class="task_list">
+    <%= render :partial => "task", :collection => column[:tasks] %>
+  </div>
+  <div class="time_list fr">
+  </div>
+</div>

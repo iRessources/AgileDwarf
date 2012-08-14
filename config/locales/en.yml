@@ -39,3 +39,6 @@ en:
   label_settings_column1status: Status for 1st column in Tasks
   label_settings_column2status: Status for 2nd column in Tasks
   label_settings_column3status: Status for 3rd column in Tasks
+  label_settings_column4status: Status for 4th column in Tasks
+  label_settings_column5status: Status for 5th column in Tasks
+  label_settings_columncount: Nubmer of columns

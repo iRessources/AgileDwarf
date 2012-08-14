@@ -16,6 +16,8 @@ Redmine::Plugin.register :AgileDwarf do
       :stcolumn1 => 1,
       :stcolumn2 => 2,
       :stcolumn3 => 3,
+      :stcolumn4 => 1,
+      :stcolumn5 => 2,
   }, :partial => 'shared/settings'
 
   project_module :scrum do

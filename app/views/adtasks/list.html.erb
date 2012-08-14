@@ -61,30 +61,5 @@
 </div>
 
 <div id="tasks">
-    <div class='task_panel' id="column.<%= @columns[0][:id] %>">
-      <h3><%=h @statuses[@columns[0][:id]] %></h3>
-      <div class="task_list">
-        <%= render :partial => "task", :collection => @columns[0][:tasks] %>
-      </div>
-      <div class="time_list fr">
-      </div>
-    </div>
-
-    <div class='task_panel' id="column.<%= @columns[1][:id] %>">
-      <h3><%=h @statuses[@columns[1][:id]] %></h3>
-      <div class="task_list">
-        <%= render :partial => "task", :collection => @columns[1][:tasks] %>
-      </div>
-      <div class="time_list fr">
-      </div>
-    </div>
-
-    <div class='task_panel' id="column.<%= @columns[2][:id] %>">
-      <h3><%=h @statuses[@columns[2][:id]] %></h3>
-      <div class="task_list">
-        <%= render :partial => "task", :collection => @columns[2][:tasks] %>
-      </div>
-      <div class="time_list fr">
-      </div>
-    </div>
+  <%= render :partial => "column", :collection => @columns %>
 </div>
