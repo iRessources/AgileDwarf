@@ -1,5 +1,5 @@
 <div id="task.<%=h task.id %>" class="sc_task <%= @closed_status == task.status_id ? 'closed_task' : '' %>">
-  <div class="fl task_no"><a href="/issues/<%=h task.id %>">#<%=h task.id %></a></div>
+  <div class="fl task_no"><a href="<%= url_for(:controller => 'issues', :action => task.id) %>">#<%=h task.id %></a></div>
   <div class="fl task_desc"><img src="<%= File.join(@plugin_path, 'images', 'task_desc.png') %>"/></div>
   <div class="task_subject"><%=h task.subject %></div>
   <div class="task_estimate fl"><%=h task.estimated_hours || l(:label_sprints_placeholder_estimated) %></div>

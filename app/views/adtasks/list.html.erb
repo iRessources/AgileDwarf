@@ -21,6 +21,7 @@
         project_users: <%= ActiveSupport::JSON.encode(@assignables_list).html_safe %>,
         urls:
         {
+            'taskdnd': '<%= url_for(:controller => 'adtaskinl', :action => 'update') %>',
             'taskinline': '<%= url_for(:controller => 'adtaskinl', :action => 'inplace') %>',
             'tasktip': '<%= url_for(:controller => 'adtaskinl', :action => 'tooltip') %>',
             'taskspent': '<%= url_for(:controller => 'adtaskinl', :action => 'spent') %>',

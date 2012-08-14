@@ -20,6 +20,7 @@
         plugin_path: '<%= @plugin_path %>',
         urls:
         {
+            'taskdnd': '<%= url_for(:controller => 'adtaskinl', :action => 'update') %>',
             'taskinline': '<%= url_for(:controller => 'adtaskinl', :action => 'inplace') %>',
             'tasktip': '<%= url_for(:controller => 'adtaskinl', :action => 'tooltip') %>',
             'taskcreate': '<%= url_for(:controller => 'adtaskinl', :action => 'create') %>',

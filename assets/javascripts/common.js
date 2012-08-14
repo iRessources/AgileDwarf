@@ -82,7 +82,7 @@ var Sprints = function ()
                             onChangeColumnPos(newList, params, item);
                         $.ajax(
                         {
-                            url: "/adtaskinl/update",
+                            url: settings.urls['taskdnd'],
                             data: params
                         });
                     }
@@ -91,7 +91,7 @@ var Sprints = function ()
                     onChangeColumn(newList, params, oldList, item);
                     $.ajax(
                     {
-                        url: "/adtaskinl/update",
+                        url: settings.urls['taskdnd'],
                         data: params
                     });
                 }
