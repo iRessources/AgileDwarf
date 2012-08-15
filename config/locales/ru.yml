@@ -1,0 +1,44 @@
+# English strings go here for Rails i18n
+ru:
+  label_menu_sprints: Спринты
+  label_menu_mytasks: Доска Scrum
+  label_menu_burndown: Отчеты
+  label_burndown_series_spent: Затраченное время
+  label_burndown_series_rest: Расчетно время
+  label_burndown_series_total: Всего
+  label_burndown_axis_y_name: Часы
+  label_backlog: Backlog
+  label_estimated: "Назначено "
+  label_task_field_description_empty: Без описания
+  label_sprints_placeholder_name: "Спринт "
+  label_sprints_placeholder_startdate: "[Дата начала]"
+  label_sprints_placeholder_enddate: "[Дата окончания]"
+  label_sprints_placeholder_estimated: "[Расчетное]"
+  label_sprints_placeholder_subject: "[Название]"
+  label_sprints_placeholder_owner: "[Владелец]"
+  label_sprints_placeholder_done: "[Степень исполнения]"
+  label_sprints_placeholder_desc: "[Описание]"
+  label_sprints_description_panel_header: Описание
+  label_sprints_select_all: Все
+  label_sprints_select_none: Вне спринта
+  label_sprints_showclosed: Показать закрытые спринты
+  label_sprints_filter: Показать спринты
+  label_sprints_title_fold: Раскрыть
+  label_sprints_title_add_task: Добавить задачу
+  label_sprints_title_add_sprint: Создать спринт
+  label_sprints_title_close: Закрять спринт
+  label_sprints_dialogs_closeerror_title: Вы не можете закрыть спринт
+  label_sprints_dialogs_closeerror_content: Вы можете закрыть спринт только со всеми выполнеными задачами
+  label_sprints_dialogs_closeconfirm_title: Подтверждение закрытия
+  label_sprints_dialogs_closeconfirm_content: Вы действительно хотите закрыть этот спринт?
+  label_tasks_select_user_current: Мои
+  label_tasks_select_user_all: Все
+  label_settings_tracker: Трекер по умолчанию для новых задач
+  label_settings_activity: Активность по умолчанию для учета времени
+  label_settings_closedstatus: Статус для определения закрытия
+  label_settings_column1status: Статус для 1-ой колонки
+  label_settings_column2status: Статус для 2-ой колонки
+  label_settings_column3status: Статус для 3-ей колонки
+  label_settings_column4status: Статус для 4-ой колонки
+  label_settings_column5status: Статус для 5-ой колонки
+  label_settings_columncount: Количество колонок
