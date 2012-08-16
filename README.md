@@ -32,7 +32,7 @@ Agile Dwarf plugin implements the agile method based on pre-estimating every tas
 
 It adds 3 new tabs to your Redmine:
 
-## Sprints
+### Sprints
 
 'Sprints' is intended for strategical planning or long-term management of backlog and sprints:
 * Quick backlog issues creation
@@ -43,7 +43,7 @@ It adds 3 new tabs to your Redmine:
 * Creating/Managing/Updating sprints
 * Prioritising stories/issues
 
-## Tasks
+### Tasks
 
 'Tasks' is for day-by-day use, every member of the team can manage his tasks quickly and efficiently:
 * Current tasks for every member grouped by status (New, In Progress, Resolved)
@@ -51,7 +51,7 @@ It adds 3 new tabs to your Redmine:
 * Quick time and progress tracking
 * Configure AgileDwarf to use your workflow by setting the number of columns that should be displayed in the task board
 
-## Run Charts
+### Run Charts
 
 'Run charts' is an instant overview of current project status:
 * One chart displays remaining and spent time at any point of the project lifecycle
