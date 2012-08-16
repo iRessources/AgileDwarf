@@ -12,7 +12,7 @@ Redmine::Plugin.register :AgileDwarf do
   settings :default => {
       :tracker => 1,
       :activity => 1,
-      :stclosed => 1,
+      :stclosed => 5,
       :stcolumn1 => 1,
       :stcolumn2 => 2,
       :stcolumn3 => 3,
