@@ -12,5 +12,4 @@ else
   match 'adsprints/(:action(/:id))', :controller => 'adsprints'
   match 'adtaskinl/(:action(/:id))', :controller => 'adtaskinl'
   match 'adtasks/(:action(/:id))', :controller => 'adtasks'
-  match 'issues/(:action(/:id))', :controller => 'issues'
 end

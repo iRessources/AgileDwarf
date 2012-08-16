@@ -1,5 +1,5 @@
 <div id="task.<%=h task.id %>" class="sc_task">
-  <div class="fl task_no"><a href="<%= url_for(:controller => 'issues', :action => task.id) %>">#<%=h task.id %></a></div>
+  <div class="fl task_no">#<%= link_to task.id, :controller => 'issues', :action => 'show', :id => task %></div>
   <div class="fl task_desc"><img src="<%= File.join(@plugin_path, 'images', 'task_desc.png') %>"/></div>
   <div class="task_subject" title="<%=h task.subject %>"><%=h task.subject %></div>
   <div class="task_row">
