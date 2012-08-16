@@ -36,9 +36,9 @@ en:
   label_settings_tracker: Default tracker for new tasks
   label_settings_activity: Default activity for spent time
   label_settings_closedstatus: Status, that marks task as closed
-  label_settings_column1status: Status for 1st column in Tasks
-  label_settings_column2status: Status for 2nd column in Tasks
-  label_settings_column3status: Status for 3rd column in Tasks
-  label_settings_column4status: Status for 4th column in Tasks
-  label_settings_column5status: Status for 5th column in Tasks
-  label_settings_columncount: Nubmer of columns
+  label_settings_column1status: Task Status for 1st column
+  label_settings_column2status: Task Status for 2nd column
+  label_settings_column3status: Task Status for 3th column
+  label_settings_column4status: Task Status for 4th column
+  label_settings_column5status: Task Status for 5th column
+  label_settings_columncount: Number of columns
