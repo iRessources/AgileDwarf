@@ -1,5 +1,7 @@
-var Burndown = function ()
+var Burndown = function ($)
 {
+    $.noConflict();
+
     var obj = {};
     var opt = {};
     var settings = {};
@@ -207,4 +209,4 @@ var Burndown = function ()
     });
 
     return obj;
-}();
+}(jQuery);

@@ -1,5 +1,7 @@
-var Sprints = function ()
+var Sprints = function ($)
 {
+    $.noConflict();
+
     var settings = {};
     var obj = {};
 
@@ -132,7 +134,7 @@ var Sprints = function ()
     $(function()
     {
         for (var i = 0, len = readyList.length; i < len; ++i)
-            readyList[i]();
+            readyList[i]($);
         $('.collapsible legend').click(function()
         {
             var fieldset = $(this).parent();
@@ -142,4 +144,4 @@ var Sprints = function ()
     });
 
     return obj;
-}();
+}(jQuery);
