@@ -4,7 +4,7 @@ ru:
   label_menu_mytasks: Доска Scrum
   label_menu_burndown: Отчеты
   label_burndown_series_spent: Затраченное время
-  label_burndown_series_rest: Расчетно время
+  label_burndown_series_rest: Расчетное время
   label_burndown_series_total: Всего
   label_burndown_axis_y_name: Часы
   label_backlog: Backlog
@@ -26,7 +26,7 @@ ru:
   label_sprints_title_fold: Раскрыть
   label_sprints_title_add_task: Добавить задачу
   label_sprints_title_add_sprint: Создать спринт
-  label_sprints_title_close: Закрять спринт
+  label_sprints_title_close: Закрыть спринт
   label_sprints_dialogs_closeerror_title: Вы не можете закрыть спринт
   label_sprints_dialogs_closeerror_content: Вы можете закрыть спринт только со всеми выполнеными задачами
   label_sprints_dialogs_closeconfirm_title: Подтверждение закрытия
