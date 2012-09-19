@@ -7,7 +7,6 @@ $.editable.addInputType('ptext', {
         input.attr('autocomplete','off');
         input.attr('placeholder', settings.placeholder);
         $(this).append(input);
-        input.textPlaceholder();
         return input;
     }
 });
