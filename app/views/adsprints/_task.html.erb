@@ -1,4 +1,4 @@
-<div id="task.<%=h task.id %>" class="sc_task sc_task_cat_<%= task.category_id %> <%= @closed_status == task.status_id ? 'closed_task' : '' %>">
+<div id="task.<%=h task.id %>" class="sc_task sc_task_tracker_<%= Tracker.find(task.tracker_id).name %>  <%= task.children.count  == 0 or Tracker.find(task.tracker_id).name != 'UserStorie' ? '' : 'sc_task_hide' %> <%= @closed_status == task.status_id ? 'closed_task' : '' %>">
   <div class="fl task_no">#<%= link_to task.id, :controller => 'issues', :action => 'show', :id => task %></div>
   <div class="fl task_desc"><img src="<%= File.join(@plugin_path, 'images', 'task_desc.png') %>"/></div>
   <div class="task_subject"><%=h task.subject %></div>
