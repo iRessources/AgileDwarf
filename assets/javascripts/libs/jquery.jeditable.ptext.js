@@ -1,3 +1,4 @@
+(function($) { 
 $.editable.addInputType('ptext', {
     element : function(settings, original)
     {
@@ -11,3 +12,4 @@ $.editable.addInputType('ptext', {
         return input;
     }
 });
+})(jQuery);
