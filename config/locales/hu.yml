@@ -1,0 +1,44 @@
+# Hungarian strings go here for Rails i18n
+hu:
+  label_menu_sprints: Sprintek
+  label_menu_mytasks: Feladataim
+  label_menu_burndown: Burndown
+  label_burndown_series_spent: Eltelt idő
+  label_burndown_series_rest: Becsült hátralevő idő
+  label_burndown_series_total: Összesen
+  label_burndown_axis_y_name: Órák
+  label_backlog: Backlog
+  label_estimated: "Becsült "
+  label_task_field_description_empty: Nincs leírás
+  label_sprints_placeholder_name: "Sprint "
+  label_sprints_placeholder_startdate: "[Kezdés dátuma]"
+  label_sprints_placeholder_enddate: "[Befejezés dátuma]"
+  label_sprints_placeholder_estimated: "[Becslés]"
+  label_sprints_placeholder_subject: "[Tárgy]"
+  label_sprints_placeholder_owner: "[Tulajdonos]"
+  label_sprints_placeholder_done: "[Készültségi arány]"
+  label_sprints_placeholder_desc: "[Leírás]"
+  label_sprints_description_panel_header: Leírás
+  label_sprints_select_all: Minden sprint
+  label_sprints_select_none: Sprinten kívül
+  label_sprints_showclosed: Lezárt sprintek mutatása
+  label_sprints_filter: Sprint mutatása
+  label_sprints_title_fold: Kinyit/Összecsuk
+  label_sprints_title_add_task: Feladat hozzáadása
+  label_sprints_title_add_sprint: Sprint hozzáadása
+  label_sprints_title_close: Sprint lezárása
+  label_sprints_dialogs_closeerror_title: Ez a sprint nem lezárható
+  label_sprints_dialogs_closeerror_content: Csak az a sprint zárható le, amiben minden feladat lezárt.
+  label_sprints_dialogs_closeconfirm_title: Lezárás megerősítés
+  label_sprints_dialogs_closeconfirm_content: Biztosan lezárod ezt a sprintet? A lezárt sprintek is bármikor megtekinthetők.
+  label_tasks_select_user_current: Én
+  label_tasks_select_user_all: Mindenki
+  label_settings_tracker: Alapértelmezett tracker az új feladatokhoz
+  label_settings_activity: Alapértelmezett tevékenység az idő rögzítéshez
+  label_settings_closedstatus: A lezárt feladatot jelölő státusz
+  label_settings_column1status: Az első oszlop feladat státusza
+  label_settings_column2status: A második oszlop feladat státusza
+  label_settings_column3status: A harmadik oszlop feladat státusza
+  label_settings_column4status: A negyedik oszlop feladat státusza
+  label_settings_column5status: Az ötödik oszlop feladat státusza
+  label_settings_columncount: Oszlopok száma
