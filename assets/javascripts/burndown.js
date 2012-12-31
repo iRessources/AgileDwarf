@@ -45,7 +45,7 @@ var Burndown = function ($)
         {
             if (!tasks.hasOwnProperty(id))
                 continue;
-            tasks[id].created_on = Date.fromMysql(tasks[id].created_on);
+            tasks[id].sprints_tasks.created_on = Date.fromMysql(tasks[id].sprints_tasks.created_on);
         }
         // loop through changes
         for (i = 0, len = changes.length; i < len; )
@@ -59,7 +59,7 @@ var Burndown = function ($)
             {
                 if (!tasks.hasOwnProperty(id))
                     continue;
-                var task = tasks[id];
+                var task = tasks[id].sprints_tasks;
                 // delete tasks, that was created after current date
                 if (task.created_on > dateTime)
                     delete tasks[id];
@@ -76,9 +76,9 @@ var Burndown = function ($)
             while (dateTime == changeDate)
             {
                 if (changes[i].prop_key == 'done_ratio')
-                    tasks[changes[i].issueId].done_ratio = changes[i].value;
+                    tasks[changes[i].issueId].sprints_tasks.done_ratio = changes[i].value;
                 else
-                    tasks[changes[i].issueId].estimated_hours = changes[i].value;
+                    tasks[changes[i].issueId].sprints_tasks.estimated_hours = changes[i].value;
                 // next change
                 i++;
                 if (i >= len)
