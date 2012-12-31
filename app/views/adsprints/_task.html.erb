@@ -1,6 +1,7 @@
 <div id="task.<%=h task.id %>" class="sc_task <%= @closed_status == task.status_id ? 'closed_task' : '' %>">
   <div class="fl task_no">#<%= link_to task.id, :controller => 'issues', :action => 'show', :id => task %></div>
   <div class="fl task_desc"><img src="<%= File.join(@plugin_path, 'images', 'task_desc.png') %>"/></div>
+  <div class="fl task_tracker_name"><%=h task.t_name %>&nbsp;-&nbsp;</div>
   <div class="task_subject"><%=h task.subject %></div>
   <div class="task_estimate fl"><%=h task.estimated_hours || l(:label_sprints_placeholder_estimated) %></div>
   <div class="task_owner fr"><%=h task.assigned_to %></div>
