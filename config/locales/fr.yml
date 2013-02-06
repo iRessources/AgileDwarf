@@ -1,0 +1,44 @@
+# French strings go here for Rails i18n
+fr:
+  label_menu_sprints: Sprints
+  label_menu_mytasks: Tâches
+  label_menu_burndown: Run charts
+  label_burndown_series_spent: Temps passé
+  label_burndown_series_rest: Estimation restante
+  label_burndown_series_total: Total
+  label_burndown_axis_y_name: Heures
+  label_backlog: Backlog
+  label_estimated: "Estimaté pour "
+  label_task_field_description_empty: Aucune description
+  label_sprints_placeholder_name: "Sprint "
+  label_sprints_placeholder_startdate: "[Date de début]"
+  label_sprints_placeholder_enddate: "[Date de fin]"
+  label_sprints_placeholder_estimated: "[Estimé]"
+  label_sprints_placeholder_subject: "[Sujet]"
+  label_sprints_placeholder_owner: "[Propriétaire]"
+  label_sprints_placeholder_done: "[Ratio Fait]"
+  label_sprints_placeholder_desc: "[Description]"
+  label_sprints_description_panel_header: Description
+  label_sprints_select_all: Tous
+  label_sprints_select_none: Sans sprint
+  label_sprints_showclosed: Afficher les sprints fermés
+  label_sprints_filter: Afficher le sprint
+  label_sprints_title_fold: Plier
+  label_sprints_title_add_task: Ajouter une tâche
+  label_sprints_title_add_sprint: Ajouter un sprint
+  label_sprints_title_close: Fermer le sprint
+  label_sprints_dialogs_closeerror_title: Impossible de fermer ce sprint
+  label_sprints_dialogs_closeerror_content: Vous ne pouvez fermer que les sprints avec toutes les tâches résolues.
+  label_sprints_dialogs_closeconfirm_title: Confirmation de fermeture
+  label_sprints_dialogs_closeconfirm_content: Voulez vous vraiment fermer ce sprint ? Vous pouvez à tout moment voir tous les sprints, même fermés.
+  label_tasks_select_user_current: Moi
+  label_tasks_select_user_all: Tous
+  label_settings_tracker: Tracker par défaut pour les nouvelles tâches
+  label_settings_activity: Activité par défaut pour le temps passé
+  label_settings_closedstatus: Status, qui marque une tâche comme fermée
+  label_settings_column1status: Statut des tâches de la 1ère colonne
+  label_settings_column2status: Statut des tâches de la 2nde colonne
+  label_settings_column3status: Statut des tâches de la 3ème colonne
+  label_settings_column4status: Statut des tâches de la 4ème colonne
+  label_settings_column5status: Statut des tâches de la 5ème colonne
+  label_settings_columncount: Nombre de colonnes
