@@ -25,11 +25,10 @@ class AdtasksController < ApplicationController
     user = nil if @user == 'all'
 
     @plugin_path = File.join(Redmine::Utils.relative_url_root, 'plugin_assets', 'AgileDwarf')
-
     status_ids = []
-    colcount = Setting.plugin_AgileDwarf[:stcolumncount].to_i
+    colcount = Setting.plugin_AgileDwarf['stcolumncount'].to_i
     for i in 1 .. colcount
-      status_ids << Setting.plugin_AgileDwarf[('stcolumn' + i.to_s).to_sym].to_i
+      status_ids << Setting.plugin_AgileDwarf[('stcolumn' + i.to_s)].to_i
     end
     @statuses = {}
     IssueStatus.find_all_by_id(status_ids).each {|x| @statuses[x.id] = x.name}
