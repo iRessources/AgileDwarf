@@ -80,6 +80,23 @@
     -webkit-box-shadow: 0 0 4px #1f6993;
 }
 
+
+.task_list .sc_task_hide
+{
+    display:None;
+}
+
+.task_list .sc_task.sc_task_tracker_UserStorie
+{
+    border-color: #276DFA;
+    background: rgba(39, 109, 250, 0.3);
+    box-shadow: 0 0 4px #276DFA;
+    -moz-box-shadow: 0 0 4px #276DFA;
+    -ms-box-shadow: 0 0 4px #276DFA;
+    -o-box-shadow: 0 0 4px #276DFA;
+    -webkit-box-shadow: 0 0 4px #276DFA;
+}
+
 .task_list
 {
     margin: 0;
