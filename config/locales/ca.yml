@@ -1,0 +1,44 @@
+# Catalan translate for AgileDwarf
+ca:
+  label_menu_sprints: Sprints
+  label_menu_mytasks: Tasques
+  label_menu_burndown: Gràfica burn down
+  label_burndown_series_spent: Temps invertit
+  label_burndown_series_rest: Temps estimat restant
+  label_burndown_series_total: Total
+  label_burndown_axis_y_name: Hores
+  label_backlog: Backlog
+  label_estimated: "Estimat per "
+  label_task_field_description_empty: Sense descripció
+  label_sprints_placeholder_name: "Sprint "
+  label_sprints_placeholder_startdate: "[Data inici]"
+  label_sprints_placeholder_enddate: "[Data fi]"
+  label_sprints_placeholder_estimated: "[Estimació]"
+  label_sprints_placeholder_subject: "[Assumpte]"
+  label_sprints_placeholder_owner: "[Propietari]"
+  label_sprints_placeholder_done: "[% realitzat]"
+  label_sprints_placeholder_desc: "[Descripció]"
+  label_sprints_description_panel_header: Descripció
+  label_sprints_select_all: Tot
+  label_sprints_select_none: En cap sprint
+  label_sprints_showclosed: Mostrar sprints finalitzats
+  label_sprints_filter: Mostrar sprint
+  label_sprints_title_fold: Plegar/Desplegar
+  label_sprints_title_add_task: Afegir tasca
+  label_sprints_title_add_sprint: Afegir sprint
+  label_sprints_title_close: Tancar sprint
+  label_sprints_dialogs_closeerror_title: No es pot tancar aquest sprint
+  label_sprints_dialogs_closeerror_content: Només es pot tancar un sprint quan totes les tasques estan resoltes.
+  label_sprints_dialogs_closeconfirm_title: Confirmació per tancar
+  label_sprints_dialogs_closeconfirm_content: Realment vol tancar aquest sprint? Igualment en qualsevol moment pot veure un sprint, inclús tancat.
+  label_tasks_select_user_current: Jo
+  label_tasks_select_user_all: Tots
+  label_settings_tracker: Seguidor per defecte per les noves tasques
+  label_settings_activity: Activitat per defecte per el temps invertit
+  label_settings_closedstatus: Estat que marca la tasca com a tancada
+  label_settings_column1status: Estat de les tasques de la primera columna
+  label_settings_column2status: Estat de les tasques de la segona columna
+  label_settings_column3status: Estat de les tasques de la tercera columna
+  label_settings_column4status: Estat de les tasques de la quarta columna
+  label_settings_column5status: Estat de les tasques de la cinquena columna
+  label_settings_columncount: Número de columnes
