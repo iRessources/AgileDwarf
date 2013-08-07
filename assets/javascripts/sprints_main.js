@@ -529,8 +529,8 @@
         }
         function addSprintInlines(expand)
         {
-            $('.sprint_end', el).editable(Sprints.getUrl('sprintinline'), $.extend({}, sprintInlineOpts, {name: 'ir_end_date', type: 'datepicker'}));
-            $('.sprint_start', el).editable(Sprints.getUrl('sprintinline'), $.extend({}, sprintInlineOpts, {name: 'ir_start_date', type: 'datepicker'}));
+            $('.sprint_end', el).editable(Sprints.getUrl('sprintinline'), $.extend({}, sprintInlineOpts, {name: 'ir_end_date', type: 'datepicker', datepicker:{dateFormat:'yy-mm-dd'}}));
+            $('.sprint_start', el).editable(Sprints.getUrl('sprintinline'), $.extend({}, sprintInlineOpts, {name: 'ir_start_date', type: 'datepicker', datepicker:{dateFormat:'yy-mm-dd'}}));
             $('.sprint_name', el).editable(Sprints.getUrl('sprintinline'), $.extend({}, sprintInlineOpts, {name: 'name', type: 'text', callback: function (val, settings)
             {
                 $('#sprints_selection_el option[value=' + sprint.id + ']').text(val);
