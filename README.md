@@ -19,7 +19,7 @@ OR instead of downloading and unpacking
 
 In #{RAILS_ROOT} run the command
 
-    rake redmine:plugins:migrate
+    rake RAILS_ENV=production redmine:plugins:migrate
   
 Restart Redmine
  
