@@ -1,0 +1,44 @@
+# English strings go here for Rails i18n
+en:
+  label_menu_sprints: Sprinty
+  label_menu_mytasks: Zadania
+  label_menu_burndown: Wykresy czasowe
+  label_burndown_series_spent: Spędzony czas
+  label_burndown_series_rest: Pozostało około
+  label_burndown_series_total: Razem
+  label_burndown_axis_y_name: Godziny
+  label_backlog: Do zrobienia
+  label_estimated: "Oszacowane na "
+  label_task_field_description_empty: Bez opisu
+  label_sprints_placeholder_name: "Sprint "
+  label_sprints_placeholder_startdate: "[Data początkowa]"
+  label_sprints_placeholder_enddate: "[Data końcowa]"
+  label_sprints_placeholder_estimated: "[Oszacowane]"
+  label_sprints_placeholder_subject: "[Temat]"
+  label_sprints_placeholder_owner: "[Właściciel]"
+  label_sprints_placeholder_done: "[Częć wykonan]"
+  label_sprints_placeholder_desc: "[Opis]"
+  label_sprints_description_panel_header: Opis
+  label_sprints_select_all: Wszystko
+  label_sprints_select_none: Poza sprintem
+  label_sprints_showclosed: Pokaż zamknięte sprinty
+  label_sprints_filter: Pokaż sprint
+  label_sprints_title_fold: Zwijanie
+  label_sprints_title_add_task: Dodaj zadanie
+  label_sprints_title_add_sprint: Dodaj sprint
+  label_sprints_title_close: Zakończ sprint
+  label_sprints_dialogs_closeerror_title: Nie można zamknąć sprintu
+  label_sprints_dialogs_closeerror_content: Możesz zamknąć tylko sprint ze wszystkimi zadaniami rozwiązanymi.
+  label_sprints_dialogs_closeconfirm_title: Potwierdź zamknięcie
+  label_sprints_dialogs_closeconfirm_content: Czy na pewno chcesz zakończyć sprint? W każdej chwili możesz zobaczyć wszystkie sprinty, włączając zakończone.
+  label_tasks_select_user_current: ja
+  label_tasks_select_user_all: Wszyscy
+  label_settings_tracker: Domyślny traker dla nowych zadań
+  label_settings_activity: Domyślna katywność dla spędzonego czasu
+  label_settings_closedstatus: Status, który zaznacza zdanie jako zakończone
+  label_settings_column1status: Status zadania dla 1. kolumny
+  label_settings_column2status: Status zadania dla 2. kolumny
+  label_settings_column3status: Status zadania dla 3. kolumny
+  label_settings_column4status: Status zadania dla 4. kolumny
+  label_settings_column5status: Status zadania dla 5. kolumny
+  label_settings_columncount: Ilość kolumn
