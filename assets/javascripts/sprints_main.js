@@ -539,6 +539,9 @@
             }}));
             $('.sprint_description', el).editable(Sprints.getUrl('sprintinline'), $.extend({}, sprintInlineOpts, {name: 'description', type: 'textarea', rows: 2, cols: 50, onblur : 'submit',
                                                                                                   placeholder: Sprints.l('sprint_description_placeholder')}));
+            // to correct the date-format that is returned by datepicker for .sprint_end and .sprint_start
+            $('.sprint_end form :input:visible:first').datepicker("option", "dateFormat",  "yy-mm-dd"); 
+            $('.sprint_start form :input:visible:first').datepicker("option", "dateFormat",  "yy-mm-dd");
             if (expand)
             {
                 $('.sprint_end, .sprint_start, .sprint_name', el).click();

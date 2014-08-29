@@ -70,6 +70,8 @@ $.editable.addInputType( 'datepicker', {
       }
 
       input.datepicker(datepicker);
+      // to correct date returned by datepicker
+      input.datepicker("option", "dateFormat",  "yy-mm-dd");
       if (settings.disableDatapicker)
         input.datepicker('disable');
     }
