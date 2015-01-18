@@ -37,7 +37,7 @@ class SprintsTasks < Issue
         cond << sprint
       end
     end
-    SprintsTasks.find(:all, :order => SprintsTasks::ORDER, :conditions => cond, :joins => :status, :include => :assigned_to).each{|task| tasks << task}
+    SprintsTasks.where(cond).joins(:status).includes(:assigned_to).order(SprintsTasks::ORDER).each{|task| tasks << task}
     return tasks
   end
 
