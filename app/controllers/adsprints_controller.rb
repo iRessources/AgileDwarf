@@ -6,7 +6,7 @@ class AdsprintsController < ApplicationController
   def list
     @backlog = SprintsTasks.get_backlog(@project)
     @sprints = Sprints.all_sprints(@project)
-    @sprints.each{|s| s['tasks'] = SprintsTasks.get_tasks_by_sprint(@project, [s.id])}
+    #@sprints.each{|s| s['tasks'] = SprintsTasks.get_tasks_by_sprint(@project, [s.id])}
     @assignables = {}
     @project.assignable_users.each{|u| @assignables[u.id] = u.firstname + ' ' + u.lastname}
     @project_id = @project.id
