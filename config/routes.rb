@@ -7,9 +7,9 @@ if Rails::VERSION::MAJOR < 3
     map.connect 'adtasks/:action/:id', :controller => :adtasks
   end
 else
-  match 'adburndown/(:action(/:id))', :controller => 'adburndown'
-  match 'adsprintinl/(:action(/:id))', :controller => 'adsprintinl'
-  match 'adsprints/(:action(/:id))', :controller => 'adsprints'
-  match 'adtaskinl/(:action(/:id))', :controller => 'adtaskinl'
-  match 'adtasks/(:action(/:id))', :controller => 'adtasks'
+  match 'adburndown/(:action(/:id))', :controller => 'adburndown', :via => [:get, :post]
+  match 'adsprintinl/(:action(/:id))', :controller => 'adsprintinl', :via => [:get, :post]
+  match 'adsprints/(:action(/:id))', :controller => 'adsprints', :via => [:get, :post]
+  match 'adtaskinl/(:action(/:id))', :controller => 'adtaskinl', :via => [:get, :post]
+  match 'adtasks/(:action(/:id))', :controller => 'adtasks', :via => [:get, :post]
 end
