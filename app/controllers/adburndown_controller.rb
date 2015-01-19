@@ -40,7 +40,6 @@ class AdburndownController < ApplicationController
 
     # spent series
     spent_arr = []
-    #TimeEntry.find(:all, :select => 'spent_on, sum(hours) as spent', :conditions => spentcond, :joins => [:issue], :group => 'spent_on').each{|spent|
     TimeEntry.where(spentcond).joins(:issue).select("spent_on, sum(hours) as spent").group(:spent_on).each{|spent|
       spent_arr << '["' + spent.spent_on.to_s + '",' +  spent.spent.to_s + ']'
     }
@@ -49,7 +48,6 @@ class AdburndownController < ApplicationController
     # rest series
     # full issue list
     @tasks = {}
-    #SprintsTasks.find(:all, :select => 'DATE(created_on) as created_on, id, done_ratio, estimated_hours', :conditions => restcondtasks).each{|task| @tasks[task['id']] = task}
     SprintsTasks.where(restcondtasks).select('DATE(created_on) as created_on, id, done_ratio, estimated_hours').each{|task| @tasks[task['id']] = task}
     @tasks = @tasks.to_json
     # issue changes
