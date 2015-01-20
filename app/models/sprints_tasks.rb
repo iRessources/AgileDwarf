@@ -29,7 +29,7 @@ class SprintsTasks < Issue
 
   def self.get_tasks_by_sprint(project, sprint)
     tasks = []
-    cond = ["project_id = ? and is_closed = ?", project.id, false]
+    cond = ["project_id = ?", project.id]
     unless sprint.nil?
       if sprint == 'null'
         cond[0] += ' and fixed_version_id is null'
