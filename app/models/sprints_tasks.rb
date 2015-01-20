@@ -21,8 +21,9 @@ class SprintsTasks < Issue
       user = User.current.id if user == 'current'
       cond << user
     end
-    SprintsTasks.find(:all, :select => 'issues.*, sum(hours) as spent', :order => SprintsTasks::ORDER, :conditions => cond, :group => "issues.id",
-                      :joins => [:status], :joins => "left join time_entries ON time_entries.issue_id = issues.id", :include => [:assigned_to]).each{|task| tasks << task}
+    #SprintsTasks.find(:all, :select => 'issues.*, sum(hours) as spent', :order => SprintsTasks::ORDER, :conditions => cond, :group => "issues.id",
+    #                  :joins => [:status], :joins => "left join time_entries ON time_entries.issue_id = issues.id", :include => [:assigned_to]).each{|task| tasks << task}
+    SprintsTasks.where(cond).select('issues.*, sum(hours) as spent').order(SprintsTasks::ORDER).group("issues.id").joins(:status).joins("left join time_entries ON time_entries.issue_id = issues.id").includes(:assigned_to).each{|task| tasks << task}
     return tasks
   end
 
