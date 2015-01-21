@@ -30,8 +30,8 @@ class AdtasksController < ApplicationController
     colcount = Setting.plugin_AgileDwarf[:stcolumncount].to_i
     logger.info Setting.plugin_AgileDwarf.inspect
     logger.info colcount
-    colcount = [Setting.plugin_AgileDwarf[:stcolumn1],Setting.plugin_AgileDwarf[:stcolumn2],Setting.plugin_AgileDwarf[:stcolumn3],Setting.plugin_AgileDwarf[:stcolumn4],Setting.plugin_AgileDwarf[:stcolumn5]].max
-    logger.info colcount.inspect
+    logger.info [Setting.plugin_AgileDwarf[:stcolumn1],Setting.plugin_AgileDwarf[:stcolumn2],Setting.plugin_AgileDwarf[:stcolumn3],Setting.plugin_AgileDwarf[:stcolumn4],Setting.plugin_AgileDwarf[:stcolumn5]].max.inspect
+    #logger.info colcount.inspect
     for i in 1 .. colcount
       status_ids << Setting.plugin_AgileDwarf[('stcolumn' + i.to_s).to_sym].to_i
     end
