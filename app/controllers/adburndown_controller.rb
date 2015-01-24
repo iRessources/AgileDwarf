@@ -59,7 +59,7 @@ class AdburndownController < ApplicationController
     else
       prev_row = nil
       # Select, joins
-      ActiveRecord::Base.connection.select_all("SELECT old_value as value, journalized_id as issueId, prop_key, DATE(journals.created_on) created_on FROM journal_details, journals, issues WHERE journals.id = journal_id AND issues.id = journalized_id AND journalized_type = 'Issue' AND property = 'attr' AND (prop_key = 'estimated_hours' or prop_key = 'done_ratio') ORDER BY issueId desc, prop_key desc,journals.created_on desc").each{ |row|
+      ActiveRecord::Base.connection.select_all("SELECT old_value as value, journalized_id as issueId, prop_key, DATE(journals.created_on) created_on FROM journal_details, journals, issues WHERE journals.id = journal_id AND issues.id = journalized_id AND journalized_type = 'Issue' AND property = 'attr' AND (prop_key = 'estimated_hours' or prop_key = 'done_ratio') and #{restcondchanges} ORDER BY issueId desc, prop_key desc,journals.created_on desc").each{ |row|
         row["issueId"] = row["issueid"]
         unless prev_row == nil
           # GROUP BY issueid, prop_key, created_on
