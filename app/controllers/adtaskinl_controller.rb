@@ -50,16 +50,6 @@ class AdtaskinlController < ApplicationController
   end
 
   def spent
-    if params[:hours] != nil 
-      val = params[:hours].to_f
-      logger.info val.inspect
-      logger.info val.to_s.inspect
-      if val == 0.0 && val.to_s == "0.0"
-        logger.info "Pleae insert an integer!"
-        return
-      end 
-    end 
-
     spenttime = TimeEntry.new({:hours => params[:hours], :activity_id => Setting.plugin_AgileDwarf[:activity], :user => User.current, :project => @project, :spent_on => Date.today,
                                :issue_id => params[:id]})
     begin
@@ -83,11 +73,8 @@ class AdtaskinlController < ApplicationController
     attribs = attribs.flatten
     param_id = attribs[0]
     attribs = Hash[*attribs]
-    logger.info attribs["estimated_hours"].inspect
     if attribs["estimated_hours"] != nil
       val = attribs["estimated_hours"].to_f
-      logger.info val.inspect
-      logger.info val.to_s.inspect
       if val == 0.0 && val.to_s == "0.0"
         render :text => "Please insert integer!"
         return
