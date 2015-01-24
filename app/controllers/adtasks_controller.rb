@@ -28,15 +28,10 @@ class AdtasksController < ApplicationController
 
     status_ids = []
     colcount = Setting.plugin_AgileDwarf[:stcolumncount].to_i
-    logger.info Setting.plugin_AgileDwarf.inspect
-    logger.info colcount
-    logger.info [Setting.plugin_AgileDwarf[:stcolumn1],Setting.plugin_AgileDwarf[:stcolumn2],Setting.plugin_AgileDwarf[:stcolumn3],Setting.plugin_AgileDwarf[:stcolumn4],Setting.plugin_AgileDwarf[:stcolumn5]].max.inspect
-    #logger.info colcount.inspect
     for i in 1 .. colcount
       status_ids << Setting.plugin_AgileDwarf[('stcolumn' + i.to_s).to_sym].to_i
     end
     @statuses = {}
-    logger.info status_ids.inspect
     #IssueStatus.find_all_by_id(status_ids).each {|x| @statuses[x.id] = x.name}
     IssueStatus.find(status_ids).each {|x| @statuses[x.id] = x.name}
     @columns = []
