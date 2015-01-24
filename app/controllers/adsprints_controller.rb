@@ -6,12 +6,14 @@ class AdsprintsController < ApplicationController
   def list
     @backlog = SprintsTasks.get_backlog(@project)
     @sprints = Sprints.all_sprints(@project)
-    @sprints.each{|s| s['tasks'] = SprintsTasks.get_tasks_by_sprint(@project, [s.id])}
+    #@sprints.each{|s| s['tasks'] = SprintsTasks.get_tasks_by_sprint(@project, [s.id])}
     @assignables = {}
     @project.assignable_users.each{|u| @assignables[u.id] = u.firstname + ' ' + u.lastname}
+    @assignables[nil] = '- Unassigned -'
     @project_id = @project.id
     @plugin_path = File.join(Redmine::Utils.relative_url_root, 'plugin_assets', 'AgileDwarf')
-    @closed_status = Setting.plugin_AgileDwarf[:stclosed].to_i
+    @closed_status = []
+    IssueStatus.where("is_closed").each{|status| @closed_status << status.id}
   end
 
   private

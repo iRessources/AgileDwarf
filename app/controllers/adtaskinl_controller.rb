@@ -73,7 +73,16 @@ class AdtaskinlController < ApplicationController
     attribs = attribs.flatten
     param_id = attribs[0]
     attribs = Hash[*attribs]
-    task = SprintsTasks.find(params[:id], :include => :assigned_to)
+    if attribs["estimated_hours"] != nil
+      val = attribs["estimated_hours"].to_f
+      if val == 0.0 && val.to_s == "0.0"
+        render :text => "Please insert integer!"
+        return
+      end
+    end
+    #render :text => "Please insert integer!"
+    #task = SprintsTasks.find(params[:id], :include => :assigned_to)
+    task = SprintsTasks.includes(:assigned_to).find(params[:id])
     begin
       task.init_journal(User.current)
       result = task.update_attributes(attribs)

@@ -32,7 +32,8 @@ class AdtasksController < ApplicationController
       status_ids << Setting.plugin_AgileDwarf[('stcolumn' + i.to_s).to_sym].to_i
     end
     @statuses = {}
-    IssueStatus.find_all_by_id(status_ids).each {|x| @statuses[x.id] = x.name}
+    #IssueStatus.find_all_by_id(status_ids).each {|x| @statuses[x.id] = x.name}
+    IssueStatus.find(status_ids).each {|x| @statuses[x.id] = x.name}
     @columns = []
     for i in 0 .. colcount - 1
       @columns << {:tasks => SprintsTasks.get_tasks_by_status(@project, status_ids[i], sprint, user), :id => status_ids[i]}

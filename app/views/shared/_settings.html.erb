@@ -11,10 +11,10 @@
   <%= select_tag("settings[activity]", options_from_collection_for_select(TimeEntryActivity.all, :id, :name, Setting.plugin_AgileDwarf[:activity].to_i)) %>
 </p>
 
-<p>
+<!--<p>
   <%= content_tag(:label, l(:label_settings_closedstatus)) %>
   <%= select_tag("settings[stclosed]", options_from_collection_for_select(IssueStatus.all, :id, :name, Setting.plugin_AgileDwarf[:stclosed].to_i)) %>
-</p>
+</p>-->
 
 <p>
   <%= content_tag(:label, l(:label_settings_columncount)) %>
